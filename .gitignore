@@ -1,0 +1,10 @@
+secrets
+*.zsh_history
+*autojump
+License.plist
+*.context-license
+*.dash-license
+*LaunchBar
+*hammerspoon
+
+*iterm2*
