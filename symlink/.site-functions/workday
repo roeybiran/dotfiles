@@ -1,0 +1,28 @@
+#!/bin/zsh
+
+# > yarn lifecycle deploy | tee /dev/tty | sed -n '/^Changelog:$/,$p' | perl -pe '$f=1 if /^$/; exit if /^\s*$/; print if $f' | pbcopy && printf '\n%s\n' 'Copied to clipboard!'
+# yarn lifecycle deploy | tee /dev/tty | sed -n '/^Changelog:$/,$p' | printf "%s\n" "Deployed" "```$(perl -pe '$f=1 if /^$/; exit if /^\s*$/; print if $f')" | pbcopy && printf '\n%s\n' 'Copied to clipboard!'
+# pcregrep -M '^Changelog:(\n|.)+'
+
+case "$1" in
+gm)
+	brew services start nginx
+	for app in Docker Slack; do
+		open -jga "$app"
+	done
+
+	open -g "hammerspoon://set-default-browser?id=com.brave.Browser"
+	osascript -e 'tell application "iTerm" to launch API script named "workday"'
+	eval "$(fnm env --use-on-cd)"
+	;;
+
+gn)
+	brew services stop nginx 2>/dev/null
+	killall Figma "Docker Desktop" Cypress Slack "Brave Browser" 2>/dev/null
+	open -g "hammerspoon://set-default-browser?id=com.apple.Safari"
+	osascript -e 'tell application "iTerm" to launch API script named "workday"'
+	;;
+*)
+	echo "?"
+	;;
+esac
