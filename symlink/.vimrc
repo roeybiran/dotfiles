@@ -1,5 +1,8 @@
 " show syntax highlighting
 syntax on
+" https://github.com/sickill/vim-monokai
+" syntax enable
+colorscheme monokai
 
 " show line numbers
 set number
@@ -18,6 +21,9 @@ set nrformats+=alpha
 
 " smart case searching
 set ignorecase smartcase
+
+" highlight line containing the cursor
+set cursorline
 
 " modal cursors
 " Terminal

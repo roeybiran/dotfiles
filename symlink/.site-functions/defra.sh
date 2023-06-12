@@ -1,0 +1,11 @@
+#!/bin/zsh
+
+function defra() {
+	cd ~/Desktop || exit
+	defaults read >a
+	printf "%s\n" "Press any key to continue"
+	read -r
+	defaults read >b
+	icdiff -N -H a b
+	cd || exit
+}

@@ -1,10 +1,7 @@
-secrets
-*.zsh_history
-*autojump
-License.plist
-*.context-license
-*.dash-license
-*LaunchBar
-*hammerspoon
 *r-scripts
-*iterm2*
+
+secrets
+com.googlecode.iterm2.plist
+.zsh_history
+LaunchBar
+.hammerspoon

@@ -1,20 +1,27 @@
 [credential]
 helper = osxkeychain
+
 [user]
-email = roeybiran@icloud.com
-name = roeybiran
+	email = roeybiran@icloud.com
+	name = roeybiran
+
 [core]
 excludesfile = ~/.gitignore
 ignorecase = false
-	editor = nvim
+editor = nvim
+
 [init]
-defaultBranch = main
+	defaultBranch = main
+
 [filter "lfs"]
 process = git-lfs filter-process
 required = true
 clean = git-lfs clean -- %f
 smudge = git-lfs smudge -- %f
+
 [pull]
 ff = only
+
 [push]
 default = current
+

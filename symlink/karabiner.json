@@ -16,33 +16,7 @@
                 },
                 "rules": [
                     {
-                        "description": "grave_accent_and_tilde to ⌘⇧⌃⌥, fn if alone",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": ""
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "left_command",
-                                        "modifiers": [
-                                            "shift",
-                                            "control",
-                                            "option"
-                                        ]
-                                    }
-                                ],
-                                "to_if_alone": [
-                                    {
-                                        "key_code": "fn"
-                                    }
-                                ],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "caps_lock to control, escape if pressed alone",
+                        "description": "caps_lock to hyper, escape if pressed alone",
                         "manipulators": [
                             {
                                 "from": {

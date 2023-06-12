@@ -11,10 +11,10 @@ _keepalive() {
 }
 
 dir="$(dirname "$(zsh -c 'echo ${0:A}' "$0")")"
-linkscript="$dir/link.sh"
-linkdir="$dir/links"
-settingsscript="$dir/exec/settings.sh"
-settingsdir="$dir/settings"
+linkscript="$dir/symlink.sh"
+linkdir="$dir/symlink"
+settingsscript="$dir/config.sh"
+settingsdir="$dir/config"
 secretsdir="$dir/secrets"
 installscript="$dir/install.sh"
 installdir="$dir/install"

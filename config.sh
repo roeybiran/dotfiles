@@ -1,15 +1,7 @@
 #!/usr/bin/env bash
 
-settingsdir="${1:?ERR! no settingsdir argument supplied}"
-secretsdir="${2:?ERR! no secretsdir argument supplied}"
-sepcificapp="${3:-""}"
-
-if [[ -f ~/.hushlogin ]]; then
-	printf "%s\n" '
-# The mere presence of this file in the home directory disables the system
-# copyright notice, the date and time of the last login, the message of the
-# day as well as other information that may otherwise appear on login.
-# See `man login`.' >~/.hushlogin
+if [ ! -f ~/.hushlogin ]; then
+	printf "%s\n" 'hello' >~/.hushlogin
 fi
 
 yn() {
@@ -123,14 +115,14 @@ if ! sysadminctl -screenLock status 2>&1 | grep -q immediate; then
 	sysadminctl -screenLock immediate -password -
 fi
 
-for f in "$settingsdir/"*; do
-	if test -n "$sepcificapp" && ! echo "$f" | grep -qi "$sepcificapp"; then
+for f in ./config/*; do
+	if echo "$f" | grep -qi "$1"; then
 		continue
 	fi
 	echo ">>> Configuring $(basename "$f")"
 	"$f"
 done
 
-for f in "$secretsdir/"*.sh; do
+for f in ./secrets/*.sh; do
 	"$f"
 done

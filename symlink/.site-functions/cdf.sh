@@ -1,0 +1,17 @@
+#!/bin/zsh
+
+function cdf() {
+	current_path=$(
+		osascript <<-EOF
+			tell app "Finder"
+				try
+					POSIX path of (insertion location as alias)
+				on error
+					POSIX path of (path to desktop folder as alias)
+				end try
+			end tell
+		EOF
+	)
+
+	cd "$current_path" || exit
+}

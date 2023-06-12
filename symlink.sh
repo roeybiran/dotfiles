@@ -1,36 +1,28 @@
 #!/bin/bash
 
-# links_dir="${1:?ERR! No links_dir argument supplied}"
-# symlink_prefix="_LINK_"
-# cd "$links_dir" || exit 1
-
-trash() {
-	swift - "$@" <<-EOF
-		import Foundation
-		CommandLine.arguments.dropFirst().forEach { path in
-			try? FileManager.default.trashItem(at: URL(fileURLWithPath: path), resultingItemURL: nil)
-		}
-	EOF
-}
-
-# dirname "$0"
-# dir="$(dirname "$0")/links"
-# echo "$dir"
-
 list=(
+	.aliases:"$HOME/.aliases"
 	.Brewfile:"$HOME/.Brewfile"
+	.dash:"$HOME/.dash"
 	.gitconfig:"$HOME/.gitconfig"
 	.gitignore:"$HOME/.gitignore"
-	.vimrc:"$HOME/.vimrc"
-	.zsh_history:"$HOME/.zsh_history"
-	.zshrc:"$HOME/.zshrc"
-	karabiner.json:"$HOME/.config/karabiner/karabiner.json"
-	.site-functions:"$HOME/.site-functions"
 	.hammerspoon:"$HOME/.hammerspoon"
-	.dash:"$HOME/.dash"
-	LaunchBar:"$HOME/Library/Application Support/LaunchBar"
+	.history:"$HOME/.history"
+	.site-functions:"$HOME/.site-functions"
+	.vim:"$HOME/.vim"
+	.vimrc:"$HOME/.vimrc"
+	.zshrc:"$HOME/.zshrc"
+	autojump:"$HOME/Library/autojump"
 	com.googlecode.iterm2.plist:"$HOME/.iterm2/com.googlecode.iterm2.plist"
+	finbar_recents.json:"$HOME/Library/Application Support/com.roeybiran.Finbar/recents.json"
 	iterm2_scripts:"$HOME/Library/Application Support/iTerm2/Scripts"
+	karabiner.json:"$HOME/.config/karabiner/karabiner.json"
+	LaunchBar:"$HOME/Library/Application Support/LaunchBar"
+	nvim:"$HOME/.config/nvim"
+	xcode_keybindings:"$HOME/Library/Developer/Xcode/UserData/KeyBindings"
+	xcode_macros.plist:"$HOME/Library/Developer/Xcode/UserData/IDETemplateMacros.plist"
+	xcode_snippets:"$HOME/Library/Developer/Xcode/UserData/CodeSnippets"
+	xcode_themes:"$HOME/Library/Developer/Xcode/UserData/FontAndColorThemes"
 )
 
 for f in "${list[@]}"; do
@@ -53,21 +45,9 @@ for f in "${list[@]}"; do
 		continue
 	fi
 
-	# echo "symlinking $src --> $dst/$src"
 	ln -sfn "$final_src" "$dst"
 
 	if [[ ! -L "$dst" ]]; then
 		echo "Failed to create symlink at $dst"
 	fi
 done
-
-# tmp="$(mktemp -d)"
-# while IFS=$'\n' read -r line; do
-# 	dst_dir="$(dirname "${line//$links_dir/$HOME}")"
-# 	dst_name="$(basename "${line//$symlink_prefix/}")"
-# 	dst_path="$dst_dir/$dst_name"
-# 	test -e "$dst_path" && mv "$dst_path" "$tmp"
-# 	mkdir -p "$dst_dir" 2>/dev/null
-# 	ln -sFh "$line" "$dst_path"
-# done < <(find "$(pwd)" -name "$symlink_prefix*")
-# trash "$tmp"

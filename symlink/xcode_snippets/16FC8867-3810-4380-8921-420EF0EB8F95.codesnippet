@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string></string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>import Cocoa
+
+class AppDelegate: NSObject, NSApplicationDelegate {
+	let window = NSWindow(
+		contentRect: .init(x: 0, y: 0, width: 480, height: 270),
+		styleMask: [.titled, .closable],
+		backing: .buffered,
+		defer: true
+	)
+
+	func applicationDidFinishLaunching(_: Notification) {
+		let appMenu = NSMenuItem()
+		appMenu.submenu = NSMenu()
+		appMenu.submenu?
+			.addItem(NSMenuItem(
+				title: "Quit",
+				action: #selector(NSApplication.terminate(_:)),
+				keyEquivalent: "q"
+			))
+		let mainMenu = NSMenu(title: "Demo")
+		mainMenu.addItem(appMenu)
+		NSApplication.shared.mainMenu = mainMenu
+
+		window.contentView = &lt;#YOUR CODE HERE...#&gt;
+		
+		activate()
+	}
+
+	func activate() {
+		window.title = "Demo"
+		window.center()
+		window.makeKeyAndOrderFront(window)
+		NSApp.setActivationPolicy(.regular)
+		NSApp.activate(ignoringOtherApps: true)
+	}
+}
+
+let app = NSApplication.shared
+let delegate = AppDelegate()
+app.delegate = delegate
+app.run()
+</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>16FC8867-3810-4380-8921-420EF0EB8F95</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Swift</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>Programmatic Cocoa App</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

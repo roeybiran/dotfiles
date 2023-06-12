@@ -29,12 +29,6 @@ defaults write at.obdev.LaunchBar PhoneHandler -string "$HOME/Library/Applicatio
 ### OPTIONS
 # [✓] Show files and folders in currnet Finder window
 defaults write at.obdev.LaunchBar UseCurrentFileBrowserWindow -bool true
-# preferred file browser: finder
-# defaults write at.obdev.LaunchBar PreferredFileBrowser -int 1
-# create emails with Mail
-# defaults write at.obdev.LaunchBar EmailHandler -string com.apple.mail
-# preferred terminal: iterm
-# defaults write at.obdev.LaunchBar PreferredTerminal -int 1
 # play songs: play single song
 defaults write at.obdev.LaunchBar SongPlaybackMode -int 2
 ###

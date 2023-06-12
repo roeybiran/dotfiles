@@ -1,8 +1,9 @@
 #!/bin/sh
 
-# https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent#adding-your-ssh-key-to-the-ssh-agent
-
-test -f ~/.ssh/config && exit
+if [ ! -f ~/.ssh/config ]; then
+  mkdir ~/.ssh
+  touch ~/.ssh/config
+fi
 
 printf "%s\n" 'Host *
   AddKeysToAgent yes

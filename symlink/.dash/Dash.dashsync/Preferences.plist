@@ -9,7 +9,7 @@
 			<key>Regular_Expressions</key>
 			<dict>
 				<key>date</key>
-				<date>2022-05-16T19:55:13Z</date>
+				<date>2023-06-12T06:48:55Z</date>
 				<key>entry</key>
 				<dict>
 					<key>aliases</key>
@@ -386,7 +386,7 @@
 			<key>Hammerspoon</key>
 			<dict>
 				<key>date</key>
-				<date>2022-05-16T19:55:17Z</date>
+				<date>2023-06-12T06:48:59Z</date>
 				<key>entry</key>
 				<dict>
 					<key>aliases</key>
@@ -406,7 +406,7 @@
 			<key>Swift</key>
 			<dict>
 				<key>date</key>
-				<date>2022-05-16T19:55:16Z</date>
+				<date>2023-06-12T06:49:03Z</date>
 				<key>entry</key>
 				<dict>
 					<key>aliases</key>
@@ -430,7 +430,7 @@
 			<key>WooCommerce</key>
 			<dict>
 				<key>date</key>
-				<date>2022-05-16T19:55:17Z</date>
+				<date>2023-06-12T06:49:10Z</date>
 				<key>entry</key>
 				<dict>
 					<key>aliases</key>
@@ -580,7 +580,7 @@
 		</dict>
 	</dict>
 	<key>DHWKWebViewTextSizeMultiplier</key>
-	<real>1</real>
+	<real>1.0499999523162842</real>
 	<key>DHWebViewIsDark</key>
 	<false/>
 	<key>actuallyDarkWebView</key>
@@ -603,6 +603,8 @@
 			<string></string>
 			<key>~/Library/Application Support/Dash/DocSets/Apple_API_Reference/Apple_API_Reference.docset</key>
 			<string>a</string>
+			<key>~/Library/Application Support/Dash/DocSets/Bash/Bash.docset</key>
+			<string>sh:</string>
 			<key>~/Library/Application Support/Dash/DocSets/CSS/CSS.docset</key>
 			<string>w</string>
 			<key>~/Library/Application Support/Dash/DocSets/Emmet/Emmet.docset</key>
@@ -614,9 +616,9 @@
 			<key>~/Library/Application Support/Dash/DocSets/Lua_5.3/Lua.docset</key>
 			<string>hs:</string>
 			<key>~/Library/Application Support/Dash/DocSets/Man_Pages/Man Pages.docset</key>
-			<string>man:</string>
+			<string>man</string>
 			<key>~/Library/Application Support/Dash/DocSets/NodeJS/NodeJS.docset</key>
-			<string>w</string>
+			<string>node</string>
 			<key>~/Library/Application Support/Dash/DocSets/PHP/PHP.docset</key>
 			<string>wp</string>
 			<key>~/Library/Application Support/Dash/DocSets/Python_2/Python 2.docset</key>
@@ -634,7 +636,7 @@
 			<key>~/Library/Application Support/Dash/DocSets/Unity_3D/Unity 3D.docset</key>
 			<string>unity</string>
 			<key>~/Library/Application Support/Dash/DocSets/Vim/Vim.docset</key>
-			<string>vi:</string>
+			<string>v:</string>
 			<key>~/Library/Application Support/Dash/DocSets/WordPress/WordPress.docset</key>
 			<string>wp:</string>
 			<key>~/Library/Application Support/Dash/User Contributed/Hammerspoon/Hammerspoon.docset</key>
@@ -663,67 +665,67 @@
 			<key>http://kapeli.com/feeds/Bash.xml</key>
 			<dict>
 				<key>date</key>
-				<date>2022-05-16T19:55:16Z</date>
+				<date>2023-06-12T06:49:06Z</date>
 			</dict>
 			<key>http://kapeli.com/feeds/CSS.xml</key>
 			<dict>
 				<key>date</key>
-				<date>2022-05-16T19:55:33Z</date>
+				<date>2023-06-12T06:51:17Z</date>
 			</dict>
 			<key>http://kapeli.com/feeds/Emmet.xml</key>
 			<dict>
 				<key>date</key>
-				<date>2022-05-16T19:55:15Z</date>
+				<date>2023-06-12T06:48:56Z</date>
 			</dict>
 			<key>http://kapeli.com/feeds/HTML.xml</key>
 			<dict>
 				<key>date</key>
-				<date>2022-05-16T19:55:25Z</date>
+				<date>2023-06-12T06:51:09Z</date>
 			</dict>
 			<key>http://kapeli.com/feeds/JavaScript.xml</key>
 			<dict>
 				<key>date</key>
-				<date>2022-05-16T19:56:17Z</date>
+				<date>2023-06-12T07:07:29Z</date>
 			</dict>
 			<key>http://kapeli.com/feeds/Lua_5.3.xml</key>
 			<dict>
 				<key>date</key>
-				<date>2022-05-16T19:55:51Z</date>
+				<date>2023-06-12T06:49:07Z</date>
 			</dict>
 			<key>http://kapeli.com/feeds/Man_Pages.xml</key>
 			<dict>
 				<key>date</key>
-				<date>2022-05-16T19:55:34Z</date>
+				<date>2023-06-12T06:49:07Z</date>
 			</dict>
 			<key>http://kapeli.com/feeds/NodeJS.xml</key>
 			<dict>
 				<key>date</key>
-				<date>2022-05-16T19:55:46Z</date>
+				<date>2023-06-12T06:51:15Z</date>
 			</dict>
 			<key>http://kapeli.com/feeds/PHP.xml</key>
 			<dict>
 				<key>date</key>
-				<date>2022-05-16T19:55:44Z</date>
+				<date>2023-06-12T06:50:32Z</date>
 			</dict>
 			<key>http://kapeli.com/feeds/React.xml</key>
 			<dict>
 				<key>date</key>
-				<date>2022-05-16T19:55:49Z</date>
+				<date>2023-06-12T06:51:20Z</date>
 			</dict>
 			<key>http://kapeli.com/feeds/TypeScript.xml</key>
 			<dict>
 				<key>date</key>
-				<date>2022-05-16T19:55:57Z</date>
+				<date>2023-06-12T06:49:21Z</date>
 			</dict>
 			<key>http://kapeli.com/feeds/Vim.xml</key>
 			<dict>
 				<key>date</key>
-				<date>2022-05-16T19:55:50Z</date>
+				<date>2023-06-12T06:51:23Z</date>
 			</dict>
 			<key>http://kapeli.com/feeds/WordPress.xml</key>
 			<dict>
 				<key>date</key>
-				<date>2022-05-16T19:57:15Z</date>
+				<date>2023-06-12T07:08:48Z</date>
 			</dict>
 		</dict>
 		<key>uninstalled</key>
@@ -773,7 +775,7 @@
 	<key>isPinned</key>
 	<true/>
 	<key>menuIconBehavior</key>
-	<integer>1</integer>
+	<integer>0</integer>
 	<key>placeholderDelimiter</key>
 	<string>__</string>
 	<key>profiles</key>

@@ -24,22 +24,11 @@ defaults write com.apple.dt.Xcode XCFontAndColorCurrentTheme -string "Default (L
 # -- Display --
 # show page guide
 defaults write com.apple.dt.Xcode DVTTextShowPageGuide -bool true
-# ... at column 100 (default is column 80)
-defaults write com.apple.dt.Xcode DVTTextPageGuideLocation -int 100
 # don't wrap lines
 defaults write com.apple.dt.Xcode DVTTextEditorWrapsLines -bool false
 # -- Editing --
-# automatically trim trialing whitespace
-defaults write com.apple.dt.Xcode DVTTextEditorTrimTrailingWhitespace -bool true
-# including whitespace only lines
-defaults write com.apple.dt.Xcode DVTTextEditorTrimWhitespaceOnlyLines -bool true
 # convert existing files on save
 defaults write com.apple.dt.Xcode DVTConvertExistingFilesLineEndings -bool true
-# -- Indendation --
-# tab width: 2 spaces
-defaults write com.apple.dt.Xcode DVTTextIndentTabWidth -int 2
-# indent width: 2 spaces
-defaults write com.apple.dt.Xcode DVTTextIndentWidth -int 2
 # align consecutive // comments
 defaults write com.apple.dt.Xcode DVTTextAlignConsecutiveSlashSlashComments -bool true
 # re-indent on paste
@@ -56,3 +45,11 @@ defaults write com.apple.dt.Xcode DVTTextShowMinimap -bool false
 defaults write com.apple.dt.Xcode IDEAdditionalCounterpartSuffixes -array-add Tests tests
 # show build durations
 defaults write com.apple.dt.Xcode "ShowBuildOperationDuration" -bool true
+
+# https://github.com/airbnb/swift/blob/master/resources/xcode_settings.bash
+defaults write com.apple.dt.Xcode AutomaticallyCheckSpellingWhileTyping -bool YES
+defaults write com.apple.dt.Xcode DVTTextEditorTrimTrailingWhitespace -bool YES
+defaults write com.apple.dt.Xcode DVTTextEditorTrimWhitespaceOnlyLines -bool YES
+defaults write com.apple.dt.Xcode DVTTextIndentTabWidth -int 2
+defaults write com.apple.dt.Xcode DVTTextIndentWidth -int 2
+defaults write com.apple.dt.Xcode DVTTextPageGuideLocation -int 100

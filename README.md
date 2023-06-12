@@ -33,17 +33,18 @@ TBD.
 dotfiles.sh
 
 Usage:
-  dotfiles <command> [options...]
+	dotfiles <command> [options...]
 
 Commands:
-  link
-  install
-  settings
+	link
+	install
+	settings
 ```
 
 ## Needs manual configuration
 
 - System Preferences
+
   - Notifications preference pane
     - turn on do not disturb when the display is sleeping and/or screen is locked
   - Extensions preference pane
@@ -53,21 +54,25 @@ Commands:
     - Purchases: Require After 15 minutes
 
 - Finder preferences
-    - tick "Computer" + tick "Hard disks" in the sidebar
+
+  - tick "Computer" + tick "Hard disks" in the sidebar
 
 - Safari preferences
-    - Websites > Downloads: allow all
-    - Websites > Auto-Play: allow all
-    - Extensions: enable all
+
+  - Websites > Downloads: allow all
+  - Websites > Auto-Play: allow all
+  - Extensions: enable all
 
 - Dropbox
-    - General > Open folders in: Finder
-    - Backups > untick "Enable camera uploads for:"...
-    - Backups > untick "Share screenshots using Dropbox"...
+
+  - General > Open folders in: Finder
+  - Backups > untick "Enable camera uploads for:"...
+  - Backups > untick "Share screenshots using Dropbox"...
 
 - Toggle
-    - log in
+
+  - log in
 
 - Messages
-    - set up
-    - 
+
+  - set up

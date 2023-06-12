@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# create the Developer folder
+mkdir ~/Developer 1>/dev/null 2>&1
+
 # Show the ~/Library folder
 sudo xattr -d com.apple.FinderInfo ~/Library 2>/dev/null
 sudo chflags nohidden ~/Library

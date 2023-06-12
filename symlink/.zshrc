@@ -1,12 +1,19 @@
+#!/bin/zsh
+# shellcheck shell=bash
+
+eval "$(fnm env --use-on-cd)"
+
 export EDITOR="nvim"
 alias vim="nvim"
 
+### AUTOJUMP
+[ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
+
 # z
-. /opt/homebrew/etc/profile.d/z.sh
+# . /opt/homebrew/etc/profile.d/z.sh
 
 # enable vim mode
 # bindkey -v
-source ~/.site-functions/fzf_utils
 
 alert() {
 	osascript -e "display alert \"${1:-Done!}\"" &>/dev/null
@@ -43,8 +50,9 @@ autoload bashcompinit && bashcompinit
 ### SHELL OPTS
 setopt AUTO_CD
 setopt NO_CASE_GLOB
+
 # history
-HISTFILE=~/.zsh_history
+HISTFILE=~/.history/.zsh_history
 SAVEHIST=5000
 HISTSIZE=2000
 setopt EXTENDED_HISTORY
@@ -105,8 +113,7 @@ $exit_status_bold_and_red_if_0 "
 
 export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/usr/local/share/zsh-syntax-highlighting/highlighters
 
-### AUTOJUMP
-[ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
+# [ -f ~/.local/fzf-tab/fzf-tab.plugin.zsh ] && source ~/.local/fzf-tab/fzf-tab.plugin.zsh
 
 rm() {
 	trash "$@"
@@ -143,35 +150,6 @@ dropbox_ignore_all_ignorables() {
 	find ~/Dropbox \( ${ignorables[@]} \) -prune -print -exec xattr -w com.dropbox.ignored 1 {} \;
 }
 
-applist() {
-	brewfile_list="$(brew bundle list --all --no-upgrade | grep -v "/")"
-
-	npm_list=(
-		np
-		npm-check-updates
-		vercel
-		zx
-		degit
-	)
-
-	mylist="$(printf "%s\n" "$brewfile_list" "${npm_list[@]}")"
-
-	brew="$(brew leaves)"
-	cask="$(brew list --cask)"
-	mas="$(mas list | cut -d" " -f2- | rev | cut -d" " -f2- | rev | sed -E 's/^[[:space:]]+//' | sed -E 's/[[:space:]]+$//')"
-	npm="$(npm list -g --depth=0 2>/dev/null | grep ── | cut -d" " -f2 | sed -E "s/@.+$//" | grep -ve '^npm$')"
-
-	current="$(printf "%s\n" ">> brew" "$brew" ">> cask" "$cask" ">> mas" "$mas" ">> npm" "$npm")"
-
-	while IFS=$'\n' read -r LINE; do
-		if echo "$mylist" | grep -q "$LINE"; then
-			echo -e "\033[0;32m$LINE"
-		else
-			echo -e "\033[0m$LINE"
-		fi
-	done <<<"${current}"
-}
-
 gt() {
 	paths=(
 		~/Dropbox/
@@ -193,45 +171,6 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 # fpath=(~/.site-functions "${fpath[@]}")
 # autoload -Uz $fpath[1]/*(.:t)
 
-# ALIASES
-alias nr="npm run"
-alias bci='brew install --cask'
-alias bci='brew install --cask'
-alias bcr='brew reinstall --cask'
-alias bcu='brew uninstall --cask'
-alias bi='brew install'
-alias bs='brew search'
-alias bu='brew uninstall'
-alias defd='defaults delete'
-alias defre='defaults read'
-alias deft='defaults read-type'
-alias ls='ls -G -F -A'
-alias grepi='grep -i'
-alias dbxignore='xattr -w com.dropbox.ignored 1'
-alias r='source ~/.zshrc'
-alias sketchtool=/Applications/Sketch.app/Contents/MacOS/sketchtool
-
-# git aliases
-alias gcam="git commit -am"
-gcamu() {
-	git commit -am "$1" && git push
-}
-alias gcm="git checkout master || git checkout main"
-alias git-show-ignored='git ls-files . --ignored --exclude-standard --others'
-alias git-show-tracked='git ls-tree -r HEAD --name-only'
-alias git-show-untracked='git ls-files . --exclude-standard --others'
-alias gp="git pull"
-
-gpr() {
-	git pull origin master --rebase 2>/dev/null || git pull origin main --rebase
-}
-
-alias gs="git status"
-alias gsl="git stash list"
-alias gsp="git stash pop"
-
-# maintain --check
-
 zf() {
 	if [[ -z "$1" ]]; then
 		cd "$(z | fzf | sed -E 's:^[^/]*::')"
@@ -239,3 +178,19 @@ zf() {
 		z "$1"
 	fi
 }
+
+source ~/.aliases
+
+for f in ~/.site-functions/*; do
+	source "$f"
+done
+
+# maintain --check
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/roey/Developer/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/roey/Developer/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/roey/Developer/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/roey/Developer/google-cloud-sdk/completion.zsh.inc'; fi
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

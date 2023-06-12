@@ -1,0 +1,106 @@
+#!/bin/bash
+
+# ♥︎ FZF ♥︎
+# https://github.com/junegunn/fzf#readme
+# https://github.com/junegunn/fzf#tips
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export FZF_DEFAULT_COMMAND='fd --type f'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_COMPLETION_TRIGGER=',,'
+export FZF_DEFAULT_OPTS='--height=60% --layout=reverse --marker=✅'
+
+# Use fd (https://github.com/sharkdp/fd) instead of the default find command for listing path candidates.
+_fzf_compgen_path() {
+	fd --hidden --follow --exclude ".git" . "$1"
+}
+
+# Use fd to generate the list for directory completion
+_fzf_compgen_dir() {
+	fd --type d --hidden --follow --exclude ".git" . "$1"
+}
+
+git_fuzzy_add() {
+	# https://spin.atomicobject.com/2018/04/05/fuzzy-find-git-add/
+	git ls-files -m -o --exclude-standard | fzf -m --header="ADD PATHSPEC(s)…" --print0 | xargs -0 -o -t git add
+}
+
+alias gfa=git_fuzzy_add
+
+_fzf_complete_defaults() {
+	_fzf_complete -- "$@" < <(defaults domains | sed 's/, /\n/g')
+}
+
+_fzf_complete_defaults_post() {
+	defaults read "$1"
+}
+
+git_fuzzy_checkout() {
+	if [ -z "$1" ]; then
+		git switch "$(git for-each-ref refs/heads/ --format="%(refname:short)" | fzf --header="SWITCH TO BRANCH…")" 2>/dev/null
+		return
+	fi
+
+	if [ "$1" = "-" ]; then
+		git switch -
+		return
+	fi
+
+	if [ "$1" = "m" ]; then
+		git switch master &>/dev/null || git switch main &>/dev/null
+		return
+	fi
+
+	if git branch | grep -q "$1"; then
+		:
+	else
+		git switch --create "$1"
+	fi
+}
+
+alias gsw=git_fuzzy_checkout
+
+git_fuzzy_delete_branch() {
+	# fbd - delete git branch (including remote branches)
+	# https://peterp.me/cli-tips-interactive-branch-delete/
+
+	git for-each-ref --count=30 --sort=-committerdate refs/heads/ --format="%(refname:short)" |
+		fzf --multi --print0 --header="DELETE BRANCHES…" |
+		xargs -0 -o -t git branch -D 2>/dev/null
+}
+
+alias gdb=git_fuzzy_delete_branch
+
+npm_fuzzy_run() {
+	filter='.scripts | to_entries[]? | select(.key | startswith("---") | not) | select(.value != "#" and .value != ":") | "\(input_filename) › \(.key)"'
+	choice="$(fd package.json --exec jq -r "$filter" | sed 's:/package.json::g' | sort | fzf --delimiter=" › " --preview='jq -r .scripts.\"{2}\" {1}/package.json')"
+	if [ -n "$choice" ]; then
+		# path="$(echo "$choice" | cut -d "›" -f1 | sed 's/.$//')"
+		# script="$(echo "$choice" | cut -d "›" -f2 | sed 's/^.//')"
+		(
+			cd "$path"
+		if [ -f yarn.lock ]; then
+			echo yarn "$script"
+		else
+			echo npm run "$script"
+		fi
+		)
+	fi
+}
+
+alias nfr=npm_fuzzy_run
+
+# https://github.com/bturrubiates/fzf-scripts/blob/master/git-stash-explore
+git_fuzzy_stash() {
+	git stash list | fzf --ansi --preview="echo {} | cut -d':' -f1 | xargs git stash show"
+}
+
+alias gfs="git_fuzzy_stash"
+
+git-f-log() {
+	git log --pretty="format:%Cblue%h %Creset(%an) %Cgreen(%ar) %Cblue(%s)" |
+		fzf --no-sort --tiebreak=index --ansi --preview='git diff {1} --stat'
+}
+
+alias gfl="git-f-log"
