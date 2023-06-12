@@ -1494,6 +1494,28 @@
 			</dict>
 			<dict>
 				<key>Action</key>
+				<string>alignEdgeLeft:</string>
+				<key>Alternate</key>
+				<string>NO</string>
+				<key>CommandGroupID</key>
+				<string>Xcode.InterfaceBuilderKit.CmdDefinition.AlignLeftEdges</string>
+				<key>CommandID</key>
+				<string>Xcode.InterfaceBuilderKit.CmdDefinition.AlignLeftEdges</string>
+				<key>Group</key>
+				<string>Editor Menu for Interface Builder Cocoa Preview</string>
+				<key>GroupID</key>
+				<string>Xcode.InterfaceBuilderKit.DocumentEditorMenu</string>
+				<key>GroupedAlternate</key>
+				<string>NO</string>
+				<key>Navigation</key>
+				<string>NO</string>
+				<key>Parent Title</key>
+				<string>Align</string>
+				<key>Title</key>
+				<string>Left Edges</string>
+			</dict>
+			<dict>
+				<key>Action</key>
 				<string>alignEdgeRight:</string>
 				<key>Alternate</key>
 				<string>NO</string>
@@ -1503,6 +1525,28 @@
 				<string>Xcode.InterfaceBuilderKit.CmdDefinition.AlignRightEdges</string>
 				<key>Group</key>
 				<string>Editor Menu for Interface Builder - Storyboard</string>
+				<key>GroupID</key>
+				<string>Xcode.InterfaceBuilderKit.DocumentEditorMenu</string>
+				<key>GroupedAlternate</key>
+				<string>NO</string>
+				<key>Navigation</key>
+				<string>NO</string>
+				<key>Parent Title</key>
+				<string>Align</string>
+				<key>Title</key>
+				<string>Right Edges</string>
+			</dict>
+			<dict>
+				<key>Action</key>
+				<string>alignEdgeRight:</string>
+				<key>Alternate</key>
+				<string>NO</string>
+				<key>CommandGroupID</key>
+				<string>Xcode.InterfaceBuilderKit.CmdDefinition.AlignRightEdges</string>
+				<key>CommandID</key>
+				<string>Xcode.InterfaceBuilderKit.CmdDefinition.AlignRightEdges</string>
+				<key>Group</key>
+				<string>Editor Menu for Interface Builder Cocoa Preview</string>
 				<key>GroupID</key>
 				<string>Xcode.InterfaceBuilderKit.DocumentEditorMenu</string>
 				<key>GroupedAlternate</key>

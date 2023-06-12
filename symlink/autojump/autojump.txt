@@ -7,7 +7,7 @@
 10.0	/Users/roey/.local
 17.320508075688775	/Users/roey/Dropbox/projects/code/_tests
 20.0	/Users/roey/Dropbox/projects/code/_deprecated
-257.87593916255105	/Users/roey/Desktop
+258.0697580092788	/Users/roey/Desktop
 17.320508075688775	/Users/roey/Dropbox/projects/code/InputSourceKit
 26.457513110645905	/Users/roey/Dropbox/projects/code/ShortcutKit
 10.0	/Applications/LaunchBar.app
@@ -531,7 +531,7 @@
 10.0	/Users/roey/Library/PreferencePanes/SwiftDefaultApps.prefPane/Contents/MacOS
 10.0	/Users/roey/Downloads/SwiftDefaultApps-v2
 56.568542494923804	/Users/roey/Dropbox/projects/code
-44.7213595499958	/Users/roey/Dropbox/projects/code/dotfiles
+45.82575694955841	/Users/roey/Dropbox/projects/code/dotfiles
 17.320508075688775	/Users/roey/Desktop/ConceptualDocset
 10.0	/Users/roey/Library/Developer/XCPGDevices
 41.231056256176615	/Users/roey/Dropbox/projects/code/dotfiles/links/Library/Application Support/_LINK_LaunchBar/Actions
@@ -799,4 +799,4 @@
 10.0	/Users/roey/Library/CloudStorage/Dropbox/projects/code/dash-docset-swift-language-guide/.build/swift-book/TSPL.docc
 14.142135623730951	/Users/roey/Library/CloudStorage/Dropbox/projects/code/dash-docset-swift-language-guide/.build
 10.0	/Users/roey/Library/CloudStorage/Dropbox/projects/code/dash-docset-swift-language-guide/.build/swift-book/.docc-build
-10.0	/Users/roey/Library/Application Support/com.roeybiran.Finbar
+14.142135623730951	/Users/roey/Library/Application Support/com.roeybiran.Finbar

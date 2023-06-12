@@ -1,8 +1,5 @@
 ### taps ###
 
-# HOMEBREW_BUNDLE_NO_LOCK=true
-# cask_args no_upgrade: true
-
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/cask-fonts"
@@ -39,7 +36,6 @@ cask "karabiner-elements"
 cask "hammerspoon"
 cask "launchbar"
 cask "contexts"
-cask "raycast"
 cask "kitty"
 # cask "istat-menus"
 cask "betterzip"
@@ -49,6 +45,8 @@ cask "font-input"
 cask "syntax-highlight", cask_args: ["no-quarantine"]
 cask "qlmarkdown"
 cask "qlvideo"
+cask "swiftdefaultappsprefpane", cask_args: ["no-quarantine"]
+cask "raycast"
 
 ### mas ###
 

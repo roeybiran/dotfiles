@@ -337,6 +337,20 @@ setkey 54 false 65535 113 8388608
 setkey 56 false 65535 113 8912896
 setkey 57 false 65535 100 8650752
 setkey 59 false 65535 96 9437184
+
+            60 =             {
+   10350                 enabled = 0;                                                                                                                                                    10350                 enabled = 1;
+   10351                 value =                 {                                                                                                                                       10351                 value =                 {
+   10352                     parameters =                     (                                                                                                                          10352                     parameters =                     (
+   10353                         32,                                                                                                                                                     10353                         65535,
+   10354                         49,                                                                                                                                                     10354                         111,
+   10355                         262144                                                                                                                                                  10355                         8388608
+   10356                     );                                                                                                                                                          10356                     );
+   10357                     type = standard;                                                                                                                                            10357                     type = standard;
+   10358                 };                                                                                                                                                              10358                 };
+   10359             };                                                                                                                                                                  10359             };
+   10360             61 =             {                                                                                                                                                  10360             61 =
+#
 setkey 60 false 32 49 262144
 setkey 61 false 32 49 786432
 setkey 62 false 65535 111 8388608
