@@ -580,7 +580,7 @@
 		</dict>
 	</dict>
 	<key>DHWKWebViewTextSizeMultiplier</key>
-	<real>1.0499999523162842</real>
+	<real>1</real>
 	<key>DHWebViewIsDark</key>
 	<false/>
 	<key>actuallyDarkWebView</key>
@@ -660,7 +660,7 @@
 			<key>http://kapeli.com/feeds/Apple_API_Reference.xml</key>
 			<dict>
 				<key>date</key>
-				<date>2022-05-16T19:55:50Z</date>
+				<date>2023-06-12T12:27:55Z</date>
 			</dict>
 			<key>http://kapeli.com/feeds/Bash.xml</key>
 			<dict>

@@ -22,6 +22,7 @@ alias wkgm='workday gm'
 
 alias gl="git log"
 alias gcam="git commit -am"
+alias gc="git commit -a"
 alias gcm="git commit -m"
 alias git-show-ignored='git ls-files . --ignored --exclude-standard --others'
 alias git-show-tracked='git ls-tree -r HEAD --name-only'

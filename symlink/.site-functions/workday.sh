@@ -9,14 +9,14 @@ function workday() {
 			open -jga "$app"
 		done
 		# open -g "hammerspoon://set-default-browser?id=com.brave.Browser"
-		osascript -e 'tell application "iTerm" to launch API script named "workday" arguments "gm"'
+		# osascript -e 'tell application "iTerm" to launch API script named "workday" arguments "gm"'
 		code ~/Developer/mono
 		;;
 	gn)
 		brew services stop nginx 2>/dev/null
 		killall Figma Cypress Slack "MeetingBar" "Docker Desktop" 2>/dev/null
 		# open -g "hammerspoon://set-default-browser?id=com.apple.Safari"
-		osascript -e 'tell application "iTerm" to launch API script named "workday" arguments "gn"'
+		# osascript -e 'tell application "iTerm" to launch API script named "workday" arguments "gn"'
 		;;
 	*)
 		echo "?"

@@ -1,15 +1,15 @@
-261.7250465660482	/Users/roey/Developer/mono
-74.83314773547885	/Users/roey/Developer
-116.18950038622246	/Users/roey/Dropbox/projects/code/Finbar
+266.83328128252685	/Users/roey/Developer/mono
+78.10249675906655	/Users/roey/Developer
+119.58260743101391	/Users/roey/Dropbox/projects/code/Finbar
 50.99019513590402	/Users/roey/Dropbox
-88.31760866327848	/Users/roey/Dropbox/projects/code/now-pottery-theme
-31.622776601683796	/Users/roey/Dropbox/projects/code/AXKit
+88.8819441731559	/Users/roey/Dropbox/projects/code/now-pottery-theme
+33.166247903554	/Users/roey/Dropbox/projects/code/AXKit
 10.0	/Users/roey/.local
 17.320508075688775	/Users/roey/Dropbox/projects/code/_tests
 20.0	/Users/roey/Dropbox/projects/code/_deprecated
-258.0697580092788	/Users/roey/Desktop
-17.320508075688775	/Users/roey/Dropbox/projects/code/InputSourceKit
-26.457513110645905	/Users/roey/Dropbox/projects/code/ShortcutKit
+259.99999999801474	/Users/roey/Desktop
+20.0	/Users/roey/Dropbox/projects/code/InputSourceKit
+33.166247903554	/Users/roey/Dropbox/projects/code/ShortcutKit
 10.0	/Applications/LaunchBar.app
 10.0	/Applications/LaunchBar.app/Contents/Resources/Actions/Compress (ZIP Archive).lbaction/Contents/Scripts/default.workflow
 10.0	/Applications/LaunchBar.app/Contents/Resources/Actions/Compress (ZIP Archive).lbaction/Contents/Scripts
@@ -363,7 +363,7 @@
 14.1421356237	/Users/roey/Desktop/Starter
 10.0	/Users/roey/Dropbox/dotfiles/root/Users/roey/Library/Application Support/_link_LaunchBar/Actions/launchbar-github-search.lbaction/Contents/Scripts
 14.1421356237	/Users/roey/CommandLineTool
-36.055512754645285	/Users/roey/Dropbox/projects
+37.41657386774461	/Users/roey/Dropbox/projects
 10.0	/Users/roey/Library/Containers/com.sidetree.Translate/Data/Library
 10.0	/Users/roey/Dropbox/code/_in_progress/MilonchikNew/Milonchik
 10.0	/Users/roey/OpenQuickly/OpenQuickly.xcodeproj
@@ -392,7 +392,7 @@
 10.0	/Users/roey/Desktop/DotViewUndo
 10.0	/Users/roey/Desktop/AppFinder
 10.0	/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/PyObjC/Foundation
-14.142135623730951	/Users/roey/Desktop/foo
+17.320508075688775	/Users/roey/Desktop/foo
 10.0	/Users/roey/Dropbox/code/in_progress/Phonic
 10.0	/Users/roey/Dropbox/dotfiles/root/Users/roey/Library/Application Support/_link_LaunchBar/Actions/dropbox-search.lbaction/Contents/Scripts
 10.0	/Users/roey/Dropbox/projects/in-progress/goBack
@@ -513,7 +513,7 @@
 17.320508075688775	/Users/roey/Desktop/great-danes
 10.0	/Users/roey/Desktop/great-danes/great-danes
 10.0	/Users/roey/Desktop/blog-starter-app
-20.0	/Users/roey/Developer/isowords
+22.360679774997898	/Users/roey/Developer/isowords
 10.0	/Users/roey/Dropbox/code/in_progress/Monoized
 22.360679774997898	/Users/roey/Dropbox/projects/code/Milonchik
 10.0	/Users/roey/Desktop/UIElementInspector
@@ -531,7 +531,7 @@
 10.0	/Users/roey/Library/PreferencePanes/SwiftDefaultApps.prefPane/Contents/MacOS
 10.0	/Users/roey/Downloads/SwiftDefaultApps-v2
 56.568542494923804	/Users/roey/Dropbox/projects/code
-45.82575694955841	/Users/roey/Dropbox/projects/code/dotfiles
+50.990195135927856	/Users/roey/Dropbox/projects/code/dotfiles
 17.320508075688775	/Users/roey/Desktop/ConceptualDocset
 10.0	/Users/roey/Library/Developer/XCPGDevices
 41.231056256176615	/Users/roey/Dropbox/projects/code/dotfiles/links/Library/Application Support/_LINK_LaunchBar/Actions
@@ -695,16 +695,16 @@
 10.0	/Users/roey/Library/Application Scripts
 10.0	/Applications/Xcode.app
 10.0	/Users/roey/Developer/Zavala
-42.42640687119286	/Users/roey/Dropbox/projects/code/RBKit
+45.82575694955841	/Users/roey/Dropbox/projects/code/RBKit
 10.0	/Users/roey/Dropbox/projects/code/dotfiles/symlink/xcode_snippets
 10.0	/Users/roey/Desktop/google-cloud-sdk
-20.0	/Users/roey/Dropbox/projects/code/LoginItemKit
+24.49489742783178	/Users/roey/Dropbox/projects/code/LoginItemKit
 14.142135623730951	/Users/roey/Dropbox/projects/code/RBKit/Sources/RBKit
 22.360679774997898	/Users/roey/Dropbox/projects/code/Finbar/Finbar
 10.0	/Users/roey/Dropbox/projects/code/Finbar/Finbar/Extensions
 17.320508075688775	/Users/roey/Developer/textmate
-22.360679774997898	/Users/roey/Dropbox/projects/code/PreferencesKit
-14.142135623730951	/Users/roey/Developer/swift-composable-architecture
+24.49489742783178	/Users/roey/Dropbox/projects/code/PreferencesKit
+17.320508075688775	/Users/roey/Developer/swift-composable-architecture
 10.0	/Users/roey/Developer/textmate/Frameworks/text/src
 10.0	/Users/roey/Developer/textmate/Frameworks/text
 10.0	/Users/roey/Developer/textmate/Frameworks
@@ -733,7 +733,7 @@
 10.0	/Users/roey/Dropbox/projects/code/OnboardingUI
 10.0	/Users/roey/Desktop/personal-website-v2
 26.457513110645905	/Users/roey/Dropbox/projects/code/personal-website-v2
-14.142135623730951	/Users/roey/Dropbox/projects/code/FrecencyKit
+17.320508075688775	/Users/roey/Dropbox/projects/code/FrecencyKit
 10.0	/Users/roey/Desktop/updates
 10.0	/Users/roey/Developer/Sparkle-2.3.0/bin
 22.360679774997898	/Users/roey/Desktop/finbar
@@ -777,14 +777,14 @@
 14.142135623730951	/Users/roey/Desktop/Finbar
 14.142135623730951	/Users/roey/Library/Developer/Xcode/DerivedData
 10.0	/Users/roey/Dropbox/projects/code/cms-test
-14.142135623730951	/Users/roey/Dropbox/projects/code/PreferencesKit/Tests
+17.320508075688775	/Users/roey/Dropbox/projects/code/PreferencesKit/Tests
 10.0	/Applications/Xcode.app/Contents
 10.0	/Applications/Dropbox.app/Contents/Resources
 10.0	/Users/roey/Desktop/calculator
 10.0	/Users/roey/Desktop/anchor-calculator
 10.0	/Users/roey/Developer/fuzzy
 10.0	/Users/roey/Desktop/Finbar.app/Contents/MacOS
-60.827625302982206	/Users/roey/Developer/anchor-calculator
+70.00000000000001	/Users/roey/Developer/anchor-calculator
 10.0	/Applications/Arc.app
 14.142135623730951	/Users/roey/Dropbox/projects/code/dotfiles/symlink/LaunchBar/Actions
 10.0	/Users/roey/Dropbox/TASKS
@@ -800,3 +800,8 @@
 14.142135623730951	/Users/roey/Library/CloudStorage/Dropbox/projects/code/dash-docset-swift-language-guide/.build
 10.0	/Users/roey/Library/CloudStorage/Dropbox/projects/code/dash-docset-swift-language-guide/.build/swift-book/.docc-build
 14.142135623730951	/Users/roey/Library/Application Support/com.roeybiran.Finbar
+10.0	/Users/roey/Developer/alt-tab-macos
+14.142135623730951	/Users/roey/Library/CloudStorage/Dropbox/projects/code/dotfiles
+10.0	/Users/roey/Library/CloudStorage/Dropbox/projects/code/_deprecated/anchor-assignment
+10.0	/Users/roey/Library/CloudStorage/Dropbox/projects/code/now-pottery-theme
+14.142135623730951	/Users/roey/Library/CloudStorage/Dropbox/projects/code/_sample_code/_apple/ImplementingModernCollectionViews

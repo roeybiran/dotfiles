@@ -31,10 +31,5 @@ install)
 	;;
 *)
 	echo "USAGE: dotfiles <command> [option]"
-	echo "Available commands:"
-	echo "  link                    set up symlinks"
-	echo "  install                 install packages"
-	echo "  settings [file]         set up defaults"
-	echo "    [file]    execute a specific settings file."
 	;;
 esac

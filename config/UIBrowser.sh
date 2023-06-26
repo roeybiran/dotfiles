@@ -1,5 +1,5 @@
 #!/bin/sh
-
+set -x
 # license
 defaults write com.pfiddlesoft.uibrowser EProduct -string "$UIBROWSER_PRODUCT"
 defaults write com.pfiddlesoft.uibrowser EKey -string "$UIBROWSER_KEY"

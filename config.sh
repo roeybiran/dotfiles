@@ -19,51 +19,26 @@ yn() {
 	done
 }
 
-# Privacy
-approve() {
-	osascript - "$1" "$2" &>/dev/null <<-EOF
-		on run argv
-			set theFolder to item 1 of argv
-			set theAnchor to item 2 of argv
-			tell application "Finder"
-					reveal items of (POSIX file theFolder as alias)
-					activate
-			end tell
-			tell application "System Preferences"
-					reveal anchor theAnchor of pane id "com.apple.preference.security"
-					activate
-					authorize current pane
-			end tell
-		end run
-	EOF
-}
+db_output="$(sudo sqlite3 "/Library/Application Support/com.apple.TCC/TCC.db" "SELECT service, client, auth_value FROM access" 2>&1)"
+
+if echo "$db_output" | grep -q denied; then
+	echo "Aborting! Current terminal ($TERM) doesn’t have “Full Disk Access”. Enable this in System Settings."
+	exit 1
+fi
 
 privacy_apps="
-/Applications/1Password 7.app > ScreenCapture
 /Applications/Contexts.app > Accessibility
 /Applications/Dropbox.app > Accessibility
 /Applications/Hammerspoon.app > Accessibility SystemPolicyAllFiles
-/Applications/iTerm.app > Accessibility SystemPolicyAllFiles DeveloperTool
 /Applications/LaunchBar.app > Accessibility SystemPolicyAllFiles ScreenCapture
-/Applications/Paletro.app > Accessibility
 /Applications/Script Debugger.app > Accessibility SystemPolicyAllFiles
 /Applications/UI Browser.app > Accessibility
-/Applications/Visual Studio Code.app > Accessibility SystemPolicyAllFiles
+/Applications/Visual Studio Code.app > SystemPolicyAllFiles
 /Applications/Xcode.app > Accessibility SystemPolicyAllFiles DeveloperTool
-/Library/Application Support/org.pqrs/Karabiner-Elements/bin/karabiner_grabber > kTCCServiceListenEvent
-/Library/Application Support/org.pqrs/Karabiner-Elements/bin/karabiner_observer > kTCCServiceListenEvent
-/System/Applications/Utilities/Terminal.app > Accessibility SystemPolicyAllFiles DeveloperTool
 /System/Library/CoreServices/System Events.app > Accessibility
 "
 
-auth_types=(Accessibility SystemPolicyAllFiles DeveloperTool ListenEvent ScreenCapture)
-anchors=(Privacy_Accessibility Privacy_AllFiles Privacy_Accessibility Privacy_Accessibility Privacy_Accessibility)
-
-db_output="$(sudo sqlite3 "/Library/Application Support/com.apple.TCC/TCC.db" "SELECT service, client, auth_value FROM access" 2>/dev/null)"
-
-if test $? -ne 0; then
-	db_output=""
-fi
+auth_types=(Accessibility SystemPolicyAllFiles DeveloperTool ScreenCapture)
 
 for ((i = 0; i < ${#auth_types[@]}; i++)); do
 	to_approve=()
@@ -86,10 +61,19 @@ for ((i = 0; i < ${#auth_types[@]}; i++)); do
 		if [[ "$REPLY" == [Yy] ]]; then
 			cd "$(mktemp -d)" || exit
 			for a in "${to_approve[@]}"; do
-				# TODO: symlinks dont work for the two karabiner executables
 				ln -s "$a" .
 			done
-			approve "$(pwd)" "${anchors[i]}"
+			open /System/Library/PreferencePanes/Security.prefPane
+			osascript - "$(pwd)" &>/dev/null <<-EOF
+				on run argv
+					set theFolder to item 1 of argv
+					set theAnchor to item 2 of argv
+					tell application "Finder"
+							reveal items of (POSIX file theFolder as alias)
+							activate
+					end tell
+				end run
+			EOF
 		fi
 	fi
 done
@@ -115,14 +99,39 @@ if ! sysadminctl -screenLock status 2>&1 | grep -q immediate; then
 	sysadminctl -screenLock immediate -password -
 fi
 
+#################################################################################
+# ssh
+#################################################################################
+
+if [ ! -f ~/.ssh/config ]; then
+	mkdir ~/.ssh
+	touch ~/.ssh/config
+
+	printf "%s\n" 'Host *
+  AddKeysToAgent yes
+  UseKeychain yes
+  IdentityFile ~/.ssh/id_ed25519' >~/.ssh/config
+fi
+
+#################################################################################
+# fzf
+#################################################################################
+
+if [ ! -f ~/.fzf.zsh ] || [ ! -f ~/.fzf.bash ]; then
+	fzfpath=/opt/homebrew/opt/fzf/install
+	if [ -f "$fzfpath" ]; then
+		yes | "$fzfpath"
+	fi
+fi
+
+for f in ./secrets/*.sh; do
+	source "$f"
+done
+
 for f in ./config/*; do
 	if echo "$f" | grep -qi "$1"; then
 		continue
 	fi
 	echo ">>> Configuring $(basename "$f")"
-	"$f"
-done
-
-for f in ./secrets/*.sh; do
 	"$f"
 done

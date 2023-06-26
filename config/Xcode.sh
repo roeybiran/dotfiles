@@ -2,8 +2,7 @@
 
 if [ -d /Applications/Xcode.app ]; then
 	sudo xcodebuild -license accept
-	sudo /usr/sbin/DevToolsSecurity --enable
-	# sudo xcode-select -s /Applications/Xcode.app/Contents/Developer/
+	sudo /usr/sbin/DevToolsSecurity --enable 1>/dev/null 2>&1
 fi
 
 # --- General ---

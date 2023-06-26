@@ -19,6 +19,7 @@ list=(
 	karabiner.json:"$HOME/.config/karabiner/karabiner.json"
 	LaunchBar:"$HOME/Library/Application Support/LaunchBar"
 	nvim:"$HOME/.config/nvim"
+	kitty:"$HOME/.config/kitty"
 	xcode_keybindings:"$HOME/Library/Developer/Xcode/UserData/KeyBindings"
 	xcode_macros.plist:"$HOME/Library/Developer/Xcode/UserData/IDETemplateMacros.plist"
 	xcode_snippets:"$HOME/Library/Developer/Xcode/UserData/CodeSnippets"

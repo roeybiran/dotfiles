@@ -235,16 +235,6 @@ defaults write com.apple.touchbar.agent PresentationModeFnModes -dict \
 	functionKeys -string fullControlStrip
 # use F1, F2, etc. keys as standard function keys
 defaults write -g com.apple.keyboard.fnState -bool true
-# Customzie Touch Bar
-defaults write com.apple.controlstrip FullCustomized -array NSTouchBarItemIdentifierFlexibleSpace \
-	com.apple.system.brightness \
-	com.apple.system.mission-control \
-	com.apple.system.launchpad \
-	com.apple.system.group.keyboard-brightness \
-	com.apple.system.group.media \
-	NSTouchBarItemIdentifierFlexibleSpace \
-	com.apple.system.mute \
-	com.apple.system.volume
 
 # TEXT
 # Spelling: automatic by language
@@ -323,10 +313,6 @@ setkey 33 true 65535 125 8650752
 setkey 34 true 65535 126 8781824
 setkey 35 true 65535 125 8781824
 
-# Shortcuts > Input Sources
-# Select next source in input menu: F12
-setkey 61 true 65535 1118388608
-
 setkey 36 false 65535 103 8388608
 setkey 37 false 65535 103 8519680
 setkey 51 false 39 50 1572864
@@ -338,21 +324,11 @@ setkey 56 false 65535 113 8912896
 setkey 57 false 65535 100 8650752
 setkey 59 false 65535 96 9437184
 
-            60 =             {
-   10350                 enabled = 0;                                                                                                                                                    10350                 enabled = 1;
-   10351                 value =                 {                                                                                                                                       10351                 value =                 {
-   10352                     parameters =                     (                                                                                                                          10352                     parameters =                     (
-   10353                         32,                                                                                                                                                     10353                         65535,
-   10354                         49,                                                                                                                                                     10354                         111,
-   10355                         262144                                                                                                                                                  10355                         8388608
-   10356                     );                                                                                                                                                          10356                     );
-   10357                     type = standard;                                                                                                                                            10357                     type = standard;
-   10358                 };                                                                                                                                                              10358                 };
-   10359             };                                                                                                                                                                  10359             };
-   10360             61 =             {                                                                                                                                                  10360             61 =
-#
-setkey 60 false 32 49 262144
+# Shortcuts > Input Sources
+# Select next source in input menu: F12
+setkey 60 true 65535 111 8388608
 setkey 61 false 32 49 786432
+
 setkey 62 false 65535 111 8388608
 setkey 63 false 65535 111 8519680
 # show spotlight search: ⌥SPACE

@@ -10,9 +10,9 @@ defaults write com.apple.Safari AutoOpenSafeDownloads -bool false
 # [✓] Show website icons in tabs
 defaults write com.apple.Safari ShowIconsInTabs -bool true
 # Dont autofill username and passwords
-defaults write com.apple.Safari AutoFillPasswords -bool false
+defaults write com.apple.Safari AutoFillPasswords -bool true
 # Dont autofill credit card data
-defaults write com.apple.Safari AutoFillCreditCardData -bool false
+defaults write com.apple.Safari AutoFillCreditCardData -bool true
 
 # tabs
 defaults write com.apple.Safari NeverUseBackgroundColorInToolbar -bool true
