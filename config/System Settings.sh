@@ -62,7 +62,6 @@ defaults write com.apple.menuextra.clock ShowDate -int 1
 defaults write com.apple.menuextra.clock ShowDayOfMonth -bool false
 defaults write com.apple.menuextra.clock ShowDayOfWeek -bool true
 # don't show spotlight
-defaults delete com.apple.Spotlight "NSStatusItem Preferred Position Item-0" 2>/dev/null
 defaults delete com.apple.Spotlight "NSStatusItem Visible Item-0" 2>/dev/null
 
 ##################################################################
@@ -331,8 +330,8 @@ setkey 61 false 32 49 786432
 
 setkey 62 false 65535 111 8388608
 setkey 63 false 65535 111 8519680
-# show spotlight search: ⌥SPACE
-setkey 64 true 32 49 524288
+# show spotlight search: ⌃⌥⌘SPACE
+setkey 64 true 32 49 1835008
 setkey 65 false 32 49 1572864
 setkey 7 false 65535 120 8650752
 setkey 79 false 65535 123 8650752

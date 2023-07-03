@@ -64,16 +64,17 @@ for ((i = 0; i < ${#auth_types[@]}; i++)); do
 				ln -s "$a" .
 			done
 			open /System/Library/PreferencePanes/Security.prefPane
-			osascript - "$(pwd)" &>/dev/null <<-EOF
-				on run argv
-					set theFolder to item 1 of argv
-					set theAnchor to item 2 of argv
-					tell application "Finder"
-							reveal items of (POSIX file theFolder as alias)
-							activate
-					end tell
-				end run
-			EOF
+			open "$PWD"
+			# osascript - "$(pwd)" &>/dev/null <<-EOF
+			# 	on run argv
+			# 		set theFolder to item 1 of argv
+			# 		set theAnchor to item 2 of argv
+			# 		tell application "Finder"
+			# 				reveal items of (POSIX file theFolder as alias)
+			# 				activate
+			# 		end tell
+			# 	end run
+			# EOF
 		fi
 	fi
 done
@@ -124,14 +125,14 @@ if [ ! -f ~/.fzf.zsh ] || [ ! -f ~/.fzf.bash ]; then
 	fi
 fi
 
-for f in ./secrets/*.sh; do
+for f in "$PWD"/secrets/*.sh; do
 	source "$f"
 done
 
-for f in ./config/*; do
-	if echo "$f" | grep -qi "$1"; then
-		continue
-	fi
-	echo ">>> Configuring $(basename "$f")"
+for f in "$PWD"/config/*.sh; do
+	# if echo "$f" | grep -qi "$1"; then
+	# 	continue
+	# fi
+	# echo ">>> Configuring $(basename "$f")"
 	"$f"
 done

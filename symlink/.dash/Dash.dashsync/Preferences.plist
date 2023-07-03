@@ -9,7 +9,7 @@
 			<key>Regular_Expressions</key>
 			<dict>
 				<key>date</key>
-				<date>2023-06-12T06:48:55Z</date>
+				<date>2023-07-03T09:53:17Z</date>
 				<key>entry</key>
 				<dict>
 					<key>aliases</key>
@@ -386,7 +386,7 @@
 			<key>Hammerspoon</key>
 			<dict>
 				<key>date</key>
-				<date>2023-06-12T06:48:59Z</date>
+				<date>2023-07-03T09:53:20Z</date>
 				<key>entry</key>
 				<dict>
 					<key>aliases</key>
@@ -406,7 +406,7 @@
 			<key>Swift</key>
 			<dict>
 				<key>date</key>
-				<date>2023-06-12T06:49:03Z</date>
+				<date>2023-07-03T09:53:20Z</date>
 				<key>entry</key>
 				<dict>
 					<key>aliases</key>
@@ -430,7 +430,7 @@
 			<key>WooCommerce</key>
 			<dict>
 				<key>date</key>
-				<date>2023-06-12T06:49:10Z</date>
+				<date>2023-07-03T09:53:22Z</date>
 				<key>entry</key>
 				<dict>
 					<key>aliases</key>
@@ -588,7 +588,16 @@
 	<key>annotationsAreShown</key>
 	<false/>
 	<key>bookmarks</key>
-	<array/>
+	<array>
+		<dict>
+			<key>path</key>
+			<string>dash-apple-api://load?request_key=ls/documentation/swiftui/label#//dash_ref_init(title:icon:)/Constructor/init%2528%2540ViewBuilder%2520title%253A%2520%2528%2529%2520%252D%253E%2520Title%252C%2520%2540ViewBuilder%2520icon%253A%2520%2528%2529%2520%252D%253E%2520Icon%2529/0</string>
+			<key>platformImagePath</key>
+			<string>apple</string>
+			<key>title</key>
+			<string>Label ￼-￼ init(@ViewBuilder title: () -&gt; Title, @ViewBuilder icon: () -&gt; Icon)</string>
+		</dict>
+	</array>
 	<key>docsets</key>
 	<dict>
 		<key>keywords</key>
@@ -660,72 +669,72 @@
 			<key>http://kapeli.com/feeds/Apple_API_Reference.xml</key>
 			<dict>
 				<key>date</key>
-				<date>2023-06-12T12:27:55Z</date>
+				<date>2023-07-03T09:53:50Z</date>
 			</dict>
 			<key>http://kapeli.com/feeds/Bash.xml</key>
 			<dict>
 				<key>date</key>
-				<date>2023-06-12T06:49:06Z</date>
+				<date>2023-07-03T09:53:24Z</date>
 			</dict>
 			<key>http://kapeli.com/feeds/CSS.xml</key>
 			<dict>
 				<key>date</key>
-				<date>2023-06-12T06:51:17Z</date>
+				<date>2023-07-03T09:54:22Z</date>
 			</dict>
 			<key>http://kapeli.com/feeds/Emmet.xml</key>
 			<dict>
 				<key>date</key>
-				<date>2023-06-12T06:48:56Z</date>
+				<date>2023-07-03T09:53:20Z</date>
 			</dict>
 			<key>http://kapeli.com/feeds/HTML.xml</key>
 			<dict>
 				<key>date</key>
-				<date>2023-06-12T06:51:09Z</date>
+				<date>2023-07-03T09:54:22Z</date>
 			</dict>
 			<key>http://kapeli.com/feeds/JavaScript.xml</key>
 			<dict>
 				<key>date</key>
-				<date>2023-06-12T07:07:29Z</date>
+				<date>2023-07-03T09:55:31Z</date>
 			</dict>
 			<key>http://kapeli.com/feeds/Lua_5.3.xml</key>
 			<dict>
 				<key>date</key>
-				<date>2023-06-12T06:49:07Z</date>
+				<date>2023-07-03T09:54:30Z</date>
 			</dict>
 			<key>http://kapeli.com/feeds/Man_Pages.xml</key>
 			<dict>
 				<key>date</key>
-				<date>2023-06-12T06:49:07Z</date>
+				<date>2023-07-03T09:54:26Z</date>
 			</dict>
 			<key>http://kapeli.com/feeds/NodeJS.xml</key>
 			<dict>
 				<key>date</key>
-				<date>2023-06-12T06:51:15Z</date>
+				<date>2023-07-03T09:54:29Z</date>
 			</dict>
 			<key>http://kapeli.com/feeds/PHP.xml</key>
 			<dict>
 				<key>date</key>
-				<date>2023-06-12T06:50:32Z</date>
+				<date>2023-07-03T09:55:04Z</date>
 			</dict>
 			<key>http://kapeli.com/feeds/React.xml</key>
 			<dict>
 				<key>date</key>
-				<date>2023-06-12T06:51:20Z</date>
+				<date>2023-07-03T09:54:27Z</date>
 			</dict>
 			<key>http://kapeli.com/feeds/TypeScript.xml</key>
 			<dict>
 				<key>date</key>
-				<date>2023-06-12T06:49:21Z</date>
+				<date>2023-07-03T09:54:35Z</date>
 			</dict>
 			<key>http://kapeli.com/feeds/Vim.xml</key>
 			<dict>
 				<key>date</key>
-				<date>2023-06-12T06:51:23Z</date>
+				<date>2023-07-03T09:55:08Z</date>
 			</dict>
 			<key>http://kapeli.com/feeds/WordPress.xml</key>
 			<dict>
 				<key>date</key>
-				<date>2023-06-12T07:08:48Z</date>
+				<date>2023-07-03T09:59:31Z</date>
 			</dict>
 		</dict>
 		<key>uninstalled</key>

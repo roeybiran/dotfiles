@@ -1,12 +1,12 @@
 return {
   { "akinsho/toggleterm.nvim", version = "*", config = true },
   {
-    "williamboman/mason.nvim",
-    opts = function(_, opts)
-      table.insert(opts.ensure_instsalled, "prettierd")
-      table.insert(opts.ensure_instsalled, "stylua")
-      table.insert(opts.ensure_instsalled, "shellcheck")
-      table.insert(opts.ensure_instsalled, "shfmt")
+    "s1n7ax/nvim-window-picker",
+    name = "window-picker",
+    event = "VeryLazy",
+    version = "2.*",
+    config = function()
+      require("window-picker").setup()
     end,
   },
 }

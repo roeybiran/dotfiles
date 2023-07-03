@@ -1,7 +1,7 @@
 #!/bin/zsh
 # shellcheck shell=bash
 
-eval "$(fnm env --use-on-cd)"
+# eval "$(fnm env --use-on-cd)"
 
 export EDITOR="nvim"
 alias vim="nvim"
@@ -24,7 +24,7 @@ export LANG=en_US.UTF-8
 # https://stackoverflow.com/questions/444951/zsh-stop-backward-kill-word-on-directory-delimiter
 export WORDCHARS='*?[]~=&;!#$%^(){}<>'
 
-export HOMEBREW_BUNDLE_FILE=~/.Brewfile
+# export HOMEBREW_BUNDLE_FILE=~/.Brewfile
 export HOMEBREW_NO_ANALYTICS=1
 export HOMEBREW_NO_AUTO_UPDATE=1
 

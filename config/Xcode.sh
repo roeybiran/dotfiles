@@ -9,6 +9,7 @@ fi
 defaults write com.apple.dt.Xcode IDESuppressStopExecutionWarning -bool true
 defaults write com.apple.dt.Xcode IDESuppressStopExecutionWarningTarget -string IDESuppressStopExecutionWarningTargetValue_Stop
 defaults write com.apple.dt.Xcode IDESuppressStopTestWarning -bool true
+defaults write com.apple.dt.Xcode IDEWorkspaceSuppressCleanBuildPrompt -bool true
 
 # --- Navigation ---
 defaults write com.apple.dt.Xcode IDECommandClickOnCodeAction -int 1

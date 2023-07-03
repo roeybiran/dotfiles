@@ -2,7 +2,7 @@
 
 command -v brew 1>/dev/null 2>&1 || bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-brew bundle install --global
+brew bundle install
 
 # https://sourceforge.net/projects/aoo-extensions/files/1155/3/dict-he-2010-11-05.oxt
 if [ ! -f ~/Library/Spelling/he_IL.dic ] || [ ! -f ~/Library/Spelling/he_IL.aff ]; then
