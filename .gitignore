@@ -1,7 +1,5 @@
-*r-scripts
-
-secrets
-com.googlecode.iterm2.plist
-.zsh_history
-LaunchBar
-.hammerspoon
+.DS_Store
+private/
+LaunchBar/
+.hammerspoon/
+karabiner/automatic_backups

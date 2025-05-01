@@ -1,0 +1,22 @@
+font_family family="JetBrainsMono Nerd Font Mono"
+font_size 12.0
+
+cursor_shape beam
+
+hide_window_decorations titlebar-only
+confirm_os_window_close 0
+allow_remote_control yes
+
+# OS specific tweaks
+macos_option_as_alt yes
+macos_show_window_title_in window
+
+# Keyboard shortcuts
+map cmd+t launch --type background /opt/homebrew/bin/tmux split-window -h
+map cmd+n launch --type background /opt/homebrew/bin/tmux new-window
+map cmd+w no-op
+map cmd+g launch --type background /opt/homebrew/bin/tmux display-panes
+map cmd+f launch --type background /opt/homebrew/bin/tmux copy-mode \; send-key ?
+map cmd+c launch --type background /opt/homebrew/bin/tmux copy-mode
+
+include current-theme.conf

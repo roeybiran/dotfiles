@@ -1,8 +1,9 @@
 {
-  "files.exclude": {
-    "**/_LINK_LaunchBar": true,
-    "**/_LINK_.hammerspoon": true,
-    "**/_LINK_karabiner/{assets,automatic_backups}": true
-  },
-  "search.useIgnoreFiles": false
+    "spellright.language": [
+        "en"
+    ],
+    "spellright.documentTypes": [
+        "markdown",
+        "latex"
+    ]
 }

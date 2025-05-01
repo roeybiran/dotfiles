@@ -1,0 +1,5 @@
+theme = dark:"Builtin Solarized Dark",light:"Builtin Solarized Light"
+
+# key bindings
+
+keybind = super+t=text:\x14

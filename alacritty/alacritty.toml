@@ -1,0 +1,39 @@
+# https://alacritty.org/config-alacritty.html
+
+# Normal colors
+[colors.normal]
+black   = '#073642'
+red     = '#dc322f'
+green   = '#859900'
+yellow  = '#b58900'
+blue    = '#268bd2'
+magenta = '#d33682'
+cyan    = '#2aa198'
+white   = '#eee8d5'
+
+[keyboard]
+bindings = [
+   { key  = "t", mods = "Command", command = { program = "/opt/homebrew/bin/tmux", args = ["copy-mode"] } },
+   { key  = "Escape", action = "ToggleViMode" },
+]
+
+[colors.primary]
+background = '#fdf6e3'
+foreground = '#657b83'
+
+[font]
+normal = { family = "Input Mono", style = "Regular" }
+
+[window]
+padding = { x = 4, y = 0 }
+
+[[hints.enabled]]
+command = "open" 
+binding = { key = "o", mods = "Command" }
+# regex = "(ipfs:|ipns:|magnet:|mailto:|gemini://|gopher://|https://|http://|news:|file:|git://|ssh:|ftp://)[^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩`\\\\]+"
+regex = "^.+?/.+"
+# hyperlinks = true
+
+[cursor]
+style = { shape = "Beam", blinking = "On" }
+vi_mode_style = { shape = "block", blinking = "On" }

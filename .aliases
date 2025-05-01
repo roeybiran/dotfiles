@@ -1,0 +1,43 @@
+#!/bin/bash
+
+# general
+
+alias nr="npm run"
+alias bci='brew install --cask'
+alias bci='brew install --cask'
+alias bcr='brew reinstall --cask'
+alias bcu='brew uninstall --cask'
+alias bi='brew install'
+alias bs='brew search'
+alias bu='brew uninstall'
+alias defd='defaults delete'
+alias defre='defaults read'
+alias deft='defaults read-type'
+alias ls='ls -G -F -A'
+alias r='source ~/.zshrc'
+alias j=z
+alias vim=nvim
+alias lg=lazygit
+alias cat=bat
+alias ls="eza -la --icons"
+
+# git
+
+# alias gl="git log"
+# git rev-parse --abbrev-ref --symbolic-full-name @{u}
+alias gl="git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+alias gca="git commit -a"
+alias gcam="gca -m"
+alias gc="git commit"
+alias gpl="git pull"
+alias gpu="git push"
+alias gs="git status"
+alias gsl="git stash list"
+alias gsp="git stash pop"
+alias gst="git stash"
+alias gdf="git diff"
+alias ga="git add"
+alias gtl="git tag -l"
+alias gpr="git pull --rebase"
+alias gcf="git add . && git fixup"
+alias gsh="git show"
