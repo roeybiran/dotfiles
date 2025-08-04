@@ -811,7 +811,7 @@ require('lazy').setup({
     lazy = false,
     priority = 1000,
     config = function(_, opts)
-      opts.filter = macOSTheme()
+      macOSTheme()
       require('monokai-pro').setup(opts)
       vim.cmd.colorscheme 'monokai-pro'
     end,

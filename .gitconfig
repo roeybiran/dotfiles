@@ -32,7 +32,7 @@
         enabled = true
         autoupdate = true
 [core]
-        excludesfile = ~/.gitignore
+	excludesfile = /Users/roey.biran/.gitignore
 [rebase]
         autoSquash = true
         autoStash = true
@@ -54,8 +54,8 @@
 helper = osxkeychain
 
 [user]
-email = roeybiran@icloud.com 
-name = Roey Biran
+	email = roeybiran@icloud.com
+	name = Roey Biran
 
 [core]
 ignorecase = false
@@ -70,3 +70,9 @@ process = git-lfs filter-process
 required = true
 clean = git-lfs clean -- %f
 
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true

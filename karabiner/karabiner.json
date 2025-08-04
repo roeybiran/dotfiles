@@ -50,6 +50,48 @@
                         ]
                     },
                     {
+                        "description": "Finder: Browse in LaunchBar (⌥F)",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "com.apple.finder"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "f",
+                                    "modifiers": { "mandatory": ["option"] }
+                                },
+                                "to": [{ "shell_command": "osascript -e 'tell app \"LaunchBar\" to perform action \"Finder: Browse Current Folder\"'" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Notes: Browse in LaunchBar (⇧⌘O)",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "com.apple.Notes"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "o",
+                                    "modifiers": { "mandatory": ["shift", "command"] }
+                                },
+                                "to": [{ "shell_command": "osascript -e 'tell app \"LaunchBar\" to perform action \"Notes: Search\"'" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "Raycast > emoji search (⌃⌥⇧⌘E)",
                         "manipulators": [
                             {

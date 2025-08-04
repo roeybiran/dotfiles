@@ -21,12 +21,8 @@ alias lg=lazygit
 alias cat=bat
 alias ls="eza -la --icons"
 
-# git
-
-# alias gl="git log"
-# git rev-parse --abbrev-ref --symbolic-full-name @{u}
 alias gl="git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
-alias gca="git commit -a"
+alias gca="git add . && git commit -a"
 alias gcam="gca -m"
 alias gc="git commit"
 alias gpl="git pull"
@@ -41,3 +37,8 @@ alias gtl="git tag -l"
 alias gpr="git pull --rebase"
 alias gcf="git add . && git fixup"
 alias gsh="git show"
+
+function gcampu()
+{
+    gca -m "$1" && git push
+}

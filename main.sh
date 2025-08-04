@@ -133,9 +133,22 @@ trash() {
 link() {
 	local src="$1"
 	local dst="$2"
+
+	local parent;
+	parent="$(dirname "$dst")"
+	if [[ ! -d "$parent" ]]; then
+		mkdir -p "$parent" &>/dev/null
+	fi
+
 	if [[ -e "$dst" ]]; then
 		mv -f "$dst" ~/.Trash &>/dev/null
 	fi
+
+	if [[ ! -e "$src" ]]; then
+		echo "Error: source '$src' does not exist"
+		return 1
+	fi
+
 	ln -sFn "$src" "$dst"
 }
 
@@ -172,36 +185,42 @@ mkdir -p ~/Developer &>/dev/null
 ########################################################
 # Symlinks
 ########################################################
+# dotfiles
 link "$PWD/.aliases" "$HOME/.aliases"
 link "$PWD/.gitconfig" "$HOME/.gitconfig"
 link "$PWD/.gitignore" "$HOME/.gitignore"
 link "$PWD/.zshrc" "$HOME/.zshrc"
 link "$PWD/.scripts" "$HOME/.scripts"
+link "$PWD/claude_code/CLAUDE.md" "$HOME/.claude/CLAUDE.md"
+link "$PWD/claude_code/settings.json" "$HOME/.claude/settings.json"
+
+# config
+link "$PWD/nvim" "$HOME/.config/nvim"
+link "$PWD/karabiner" "$HOME/.config/karabiner"
+link "$PWD/alacritty/alacritty.toml" "$HOME/.config/alacritty/alacritty.toml"
+link "$PWD/kitty" "$HOME/.config/kitty"
+link "$PWD/atuin/config.toml" "$HOME/.config/atuin/config.toml"
+link "$PWD/spaceship/spaceship.zsh" "$HOME/.config/spaceship/spaceship.zsh"
+link "$PWD/ghostty/config" "$HOME/.config/ghostty/config"
+
+# tmux
 link "$PWD/tmux/.tmux.conf" "$HOME/.tmux.conf"
 link "$PWD/tmux/.tmux_colorscheme.sh" "$HOME/.tmux_colorscheme.sh"
 
-link "$(dirname "$PWD")" "$HOME/Developer"
-
+# apps
 link "$PWD/.hammerspoon" "$HOME/.hammerspoon"
-link "$PWD/karabiner" "$HOME/.config/karabiner"
-
 link "$PWD/.dash" "$HOME/.dash"
 link "$PWD/LaunchBar" "$HOME/Library/Application Support/LaunchBar"
-
 link "$PWD/xcode/xcode_macros.plist" "$HOME/Library/Developer/Xcode/UserData/IDETemplateMacros.plist"
 link "$PWD/xcode/xcode_snippets" "$HOME/Library/Developer/Xcode/UserData/CodeSnippets"
 link "$PWD/xcode/xcode_themes" "$HOME/Library/Developer/Xcode/UserData/FontAndColorThemes"
-
 link "$PWD/finbar_scripts" "$HOME/Library/Application Scripts/com.roeybiran.Finbar"
 
-link "$PWD/alacritty/alacritty.toml" "$HOME/.config/alacritty/alacritty.toml"
-link "$PWD/kitty" "$HOME/.config/kitty"
-link "$PWD/ghostty/config" "$HOME/.config/ghostty/config"
-
-link "$PWD/private/zoxide" "$HOME/Library/Application Support/zoxide"
+# private
 link "$PWD/private/.history" "$HOME/.history"
 link "$PWD/private/.ssh/config" "$HOME/.ssh/config"
 link "$PWD/private/finbar_recents.json" "$HOME/Library/Application Support/com.roeybiran.Finbar/recents.json"
+link "$PWD/private/zoxide" "$HOME/Library/Application Support/zoxide"
 
 ################################
 # Archive Utility
@@ -466,7 +485,7 @@ defaults write com.apple.controlcenter "NSStatusItem Visible Sound" -bool true
 # "Control Center > Now Playing: Don't Show in Menu Bar"
 defaults write com.apple.controlcenter "NSStatusItem Visible NowPlaying" -bool false
 
-# "Control Center > > Battery > Show Percentage"
+# "Control Center > Battery > Show Percentage"
 # TODO
 
 # "Control Center > Clock > Show Date > Always"
@@ -481,14 +500,11 @@ defaults write com.apple.Siri StatusMenuVisible -bool false
 # hide user switcher in the menu bar
 defaults write com.apple.controlcenter "NSStatusItem Visible UserSwitcher" -bool false
 
+# "Desktop & Dock > Minimize windows using: Scale Effect"
+defaults write com.apple.dock mineffect -string scale
+
 # "Desktop & Dock > Automatically hide and show the Dock: ON"
 defaults write com.apple.dock autohide -bool true
-
-# show only open applications in the Dock
-defaults write com.apple.dock static-only -bool true
-
-# remove the auto-hiding Dock delay
-defaults write com.apple.dock autohide-delay -float 3600
 
 # "Desktop & Dock > Prefer tabs when opening documents: Always"
 defaults write -g AppleWindowTabbingMode -string always
@@ -510,6 +526,12 @@ defaults write com.apple.dock spans-displays -bool true
 
 # "Desktop & Dock > Hot Corners > Bottom right: –"
 defaults write com.apple.dock wvous-br-corner -int 0
+
+# show only open applications in the Dock
+defaults write com.apple.dock static-only -bool true
+
+# remove the auto-hiding Dock delay
+defaults write com.apple.dock autohide-delay -float 3600
 
 # "Notifications > Allow notifications when the screen is locked: OFF"
 # TODO
@@ -1021,39 +1043,39 @@ if ! command create-dmg; then
 	brew install imagemagick
 fi
 
-# brew install --cask --no-quarantine alacritty
-# brew install --cask --no-quarantine ghostty
+# brew install --cask alacritty
+# brew install --cask ghostty
+# brew install --cask kitty
+brew install --cask wezterm@nightly
 
-brew install --cask --no-quarantine appcleaner
-brew install --cask --no-quarantine betterzip
-brew install --cask --no-quarantine brave-browser
-brew install --cask --no-quarantine chatgpt
-brew install --cask --no-quarantine cleanshot
-brew install --cask --no-quarantine cursor
-brew install --cask --no-quarantine dash
-brew install --cask --no-quarantine dropbox
-brew install --cask --no-quarantine figma
-brew install --cask --no-quarantine font-input
-brew install --cask --no-quarantine hammerspoon
-brew install --cask --no-quarantine homerow
-brew install --cask --no-quarantine karabiner-elements
-brew install --cask --no-quarantine kitty
-brew install --cask --no-quarantine launchbar
-brew install --cask --no-quarantine little-snitch
-brew install --cask --no-quarantine local
-brew install --cask --no-quarantine macdown
-brew install --cask --no-quarantine qlmarkdown
-brew install --cask --no-quarantine qlvideo
-brew install --cask --no-quarantine raycast
-brew install --cask --no-quarantine script-debugger
-brew install --cask --no-quarantine sf-symbols
-brew install --cask --no-quarantine slack
-brew install --cask --no-quarantine spotify
-brew install --cask --no-quarantine syntax-highlight
-brew install --cask --no-quarantine the-unarchiver
-brew install --cask --no-quarantine transmit
-brew install --cask --no-quarantine ui-browser
-brew install --cask --no-quarantine visual-studio-code
+brew install --cask appcleaner
+brew install --cask betterzip
+brew install --cask chatgpt
+brew install --cask cleanshot
+brew install --cask cursor
+brew install --cask dash
+brew install --cask dropbox
+brew install --cask figma
+brew install --cask font-input
+brew install --cask hammerspoon
+brew install --cask homerow
+brew install --cask karabiner-elements
+brew install --cask launchbar
+brew install --cask little-snitch
+brew install --cask local
+brew install --cask macdown
+brew install --cask qlmarkdown
+brew install --cask qlvideo
+brew install --cask raycast
+brew install --cask script-debugger
+brew install --cask sf-symbols
+brew install --cask slack
+brew install --cask spotify
+brew install --cask syntax-highlight
+brew install --cask the-unarchiver
+brew install --cask transmit
+brew install --cask ui-browser
+brew install --cask visual-studio-code
 
 mas install 640199958  # Developer
 mas install 1544743900 # Hush
