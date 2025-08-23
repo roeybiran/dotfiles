@@ -71,7 +71,7 @@
                         ]
                     },
                     {
-                        "description": "Hammerspoon: Finder Show Original File (⇧⌘↑)",
+                        "description": "Hammerspoon > Finder > Show Original File (⇧⌘↑)",
                         "manipulators": [
                             {
                                 "conditions": [
@@ -92,7 +92,7 @@
                         ]
                     },
                     {
-                        "description": "Hammerspoon: Finder Open in New Tab (⇧⌘↓)",
+                        "description": "Hammerspoon > Finder > Open in New Tab (⇧⌘↓)",
                         "manipulators": [
                             {
                                 "conditions": [
@@ -113,7 +113,7 @@
                         ]
                     },
                     {
-                        "description": "Hammerspoon: Finder Open Package (⌥O)",
+                        "description": "Hammerspoon > Finder > Open Package (⌥O)",
                         "manipulators": [
                             {
                                 "conditions": [
@@ -134,7 +134,7 @@
                         ]
                     },
                     {
-                        "description": "Hammerspoon: Finder Right Size All Columns (⌥⇧R)",
+                        "description": "Hammerspoon > Finder > Right Size All Columns (⌥⇧R)",
                         "manipulators": [
                             {
                                 "conditions": [
@@ -155,7 +155,7 @@
                         ]
                     },
                     {
-                        "description": "Hammerspoon: Finder Right Size This Column (⌥R)",
+                        "description": "Hammerspoon > Finder > Right Size This Column (⌥R)",
                         "manipulators": [
                             {
                                 "conditions": [
@@ -176,7 +176,7 @@
                         ]
                     },
                     {
-                        "description": "Hammerspoon: Activity Monitor Radio Button 1 (⌘1)",
+                        "description": "Hammerspoon > Activity Monitor > Radio Button 1 (⌘1)",
                         "manipulators": [
                             {
                                 "conditions": [
@@ -197,7 +197,7 @@
                         ]
                     },
                     {
-                        "description": "Hammerspoon: Activity Monitor Radio Button 2 (⌘2)",
+                        "description": "Hammerspoon > Activity Monitor > Radio Button 2 (⌘2)",
                         "manipulators": [
                             {
                                 "conditions": [
@@ -218,7 +218,7 @@
                         ]
                     },
                     {
-                        "description": "Hammerspoon: Activity Monitor Radio Button 3 (⌘3)",
+                        "description": "Hammerspoon > Activity Monitor > Radio Button 3 (⌘3)",
                         "manipulators": [
                             {
                                 "conditions": [
@@ -239,7 +239,7 @@
                         ]
                     },
                     {
-                        "description": "Hammerspoon: Activity Monitor Radio Button 4 (⌘4)",
+                        "description": "Hammerspoon > Activity Monitor > Radio Button 4 (⌘4)",
                         "manipulators": [
                             {
                                 "conditions": [
@@ -260,7 +260,7 @@
                         ]
                     },
                     {
-                        "description": "Hammerspoon: Activity Monitor Radio Button 5 (⌘5)",
+                        "description": "Hammerspoon > Activity Monitor > Radio Button 5 (⌘5)",
                         "manipulators": [
                             {
                                 "conditions": [
@@ -281,7 +281,7 @@
                         ]
                     },
                     {
-                        "description": "Hammerspoon: Activity Monitor Quit Process (⌘Delete)",
+                        "description": "Hammerspoon > Activity Monitor > Quit Process (⌘Delete)",
                         "manipulators": [
                             {
                                 "conditions": [
