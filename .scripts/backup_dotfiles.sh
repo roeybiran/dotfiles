@@ -1,6 +1,6 @@
 #!/bin/bash
 
 backup_dotfiles() {
- rsync -avz "$HOME/dotfiles" "$HOME/Library/Mobile Documents/com~apple~CloudDocs/"
+ rsync -avz --delete "$HOME/dotfiles" "$HOME/Library/Mobile Documents/com~apple~CloudDocs/"
 }
 

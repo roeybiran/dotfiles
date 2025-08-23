@@ -8,7 +8,6 @@ export WORDCHARS='*?[]~=&;!#$%^(){}<>' # https://stackoverflow.com/questions/444
 export HOMEBREW_NO_ANALYTICS=1
 export HOMEBREW_NO_AUTO_UPDATE=1
 
-
 setopt complete_aliases
 set -o vi
 
@@ -51,3 +50,5 @@ source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 bindkey -r '^R' # disable fzf's default Ctrl+R binding
 eval "$(zoxide init zsh)"
 eval "$(atuin init zsh)"
+export PATH="$HOME/.local/bin:$PATH"
+

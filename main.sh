@@ -524,6 +524,9 @@ defaults write com.apple.dock expose-group-apps -bool true
 # "Desktop & Dock > Displays have separate Spaces: OFF"
 defaults write com.apple.dock spans-displays -bool true
 
+# "Desktop & Dock > Drag windows to top of screen to enter Mission Control: OFF"
+defaults write com.apple.dock enterMissionControlByTopWindowDrag -bool false
+
 # "Desktop & Dock > Hot Corners > Bottom right: –"
 defaults write com.apple.dock wvous-br-corner -int 0
 
@@ -546,6 +549,7 @@ defaults write -g AppleKeyboardUIMode -int 2
 set_symbolic_hotkey 53 false 65535 107 8388608
 # "Keyboard > Keyboard Shortcuts > Display > Increase display brightness: OFF"
 set_symbolic_hotkey 54 false 65535 113 8388608
+
 # "Keyboard > Keyboard Shortcuts > Keyboard > Change the way Tab moves focus: OFF"
 set_symbolic_hotkey 13 false 65535 98 8650752
 # "Keyboard > Keyboard Shortcuts > Keyboard > Turn keyboard access on or off: OFF"
@@ -566,10 +570,12 @@ set_symbolic_hotkey 27 false 96 50 1048576
 set_symbolic_hotkey 57 false 65535 100 8650752
 # "Keyboard > Keyboard Shortcuts > Keyboard > Show contextual menu: OFF"
 set_symbolic_hotkey 159 false 65535 36 262144
+
 # "Keyboard > Keyboard Shortcuts > Input Sources > Select the previous input source: OFF"
 set_symbolic_hotkey 61 false 32 49 786432
 # "Keyboard > Keyboard Shortcuts > Input Sources > Select next source in input menu: F12"
 set_symbolic_hotkey 60 true 65535 111 8388608
+
 # "Keyboard > Keyboard Shortcuts > Screenshots > Save picture of screen as a file: OFF"
 set_symbolic_hotkey 28 false 51 20 1179648
 # "Keyboard > Keyboard Shortcuts > Screenshots > Copy picture of screen to the clipboard: OFF"
@@ -580,77 +586,23 @@ set_symbolic_hotkey 30 false 52 21 1179648
 set_symbolic_hotkey 31 false 52 21 1441792
 # "Keyboard > Keyboard Shortcuts > Screenshots > Screenshot and recording options: OFF"
 set_symbolic_hotkey 184 false 53 23 1179648
+
 # "Keyboard > Keyboard Shortcuts > Spotlight > Show Spotlight search: ⌃⌥⌘SPACE"
 set_symbolic_hotkey 64 true 32 49 1835008
 # "Keyboard > Keyboard Shortcuts > Spotlight > Show Finder search window: OFF"
 set_symbolic_hotkey 65 false 32 49 1572864
+
 # "Keyboard > Keyboard Shortcuts > App Shortcuts > All Applications > Show Help menu: OFF"
 set_symbolic_hotkey 98 false 47 44 1179648
 
-# "Keyboard > Keyboard Shortcuts > App Shortcuts"
-# defaults write com.apple.AddressBook NSUserKeyEquivalents -dict-add "Edit Card" @e
-# defaults write com.apple.AddressBook NSUserKeyEquivalents -dict-add "Hide Groups" @~s
-# defaults write com.apple.AddressBook NSUserKeyEquivalents -dict-add "Show Groups" @~s
-# defaults write com.apple.Dictionary NSUserKeyEquivalents -dict-add "Select Next Dictionary" '@~→'
-# defaults write com.apple.Dictionary NSUserKeyEquivalents -dict-add "Select Previous Dictionary" '@~←'
-# defaults write com.apple.iCal NSUserKeyEquivalents -dict-add 'Go to Date\U2026' -string '@$g'
-# defaults write com.apple.iCal NSUserKeyEquivalents -dict-add 'Hide Calendar List' -string '@^1'
-# defaults write com.apple.iCal NSUserKeyEquivalents -dict-add 'Hide Notifications' -string '@^2'
-# defaults write com.apple.iCal NSUserKeyEquivalents -dict-add 'Show Calendar List' -string '@^1'
-# defaults write com.apple.iCal NSUserKeyEquivalents -dict-add 'Show Notifications' -string '@^2'
-# defaults write com.apple.iWork.Keynote NSUserKeyEquivalents -dict-add "New Slide" '@n'
-# defaults write com.apple.iWork.Keynote NSUserKeyEquivalents -dict-add "Next Slide" -string '@]'
-# defaults write com.apple.iWork.Keynote NSUserKeyEquivalents -dict-add "Previous Slide" -string '@['
-# defaults write com.apple.iWork.Keynote NSUserKeyEquivalents -dict-add "Zoom In" '@='
-# defaults write com.apple.iWork.Keynote NSUserKeyEquivalents -dict-add "Zoom Out" '@-'
-# defaults write com.apple.iWork.Keynote NSUserKeyEquivalents -dict-add Bigger '@$.'
-# defaults write com.apple.iWork.Keynote NSUserKeyEquivalents -dict-add Group '@g'
-# defaults write com.apple.iWork.Keynote NSUserKeyEquivalents -dict-add Smaller '@$,'
-# defaults write com.apple.iWork.Keynote NSUserKeyEquivalents -dict-add Ungroup '@$g'
-# defaults write com.apple.iWork.Numbers NSUserKeyEquivalents -dict-add "Align Center" -string '@$\'
-# defaults write com.apple.iWork.Numbers NSUserKeyEquivalents -dict-add "Align Left" -string '@$['
-# defaults write com.apple.iWork.Numbers NSUserKeyEquivalents -dict-add "Align Right" -string '@$]'
-# defaults write com.apple.iWork.Pages NSUserKeyEquivalents -dict-add "Zoom In" @=
-# defaults write com.apple.iWork.Pages NSUserKeyEquivalents -dict-add "Zoom Out" @-
-# defaults write com.apple.iWork.Pages NSUserKeyEquivalents -dict-add Bigger '@$.'
-# defaults write com.apple.iWork.Pages NSUserKeyEquivalents -dict-add Smaller '@$,'
-# defaults write com.apple.iWork.Pages NSUserKeyEquivalents -dict-add Strikethrough @^s
-# defaults write com.apple.mail NSUserKeyEquivalents -dict-add "Export as PDF…" '@$e'
-# defaults write com.apple.mail NSUserKeyEquivalents -dict-add "Save Attachments…" '@$s'
-# defaults write com.apple.Notes NSUserKeyEquivalents -dict-add "Zoom In" @=
-# defaults write com.apple.Notes NSUserKeyEquivalents -dict-add "Zoom Out" @-
-# defaults write com.apple.Notes NSUserKeyEquivalents -dict-add Bigger '@$.'
-# defaults write com.apple.Notes NSUserKeyEquivalents -dict-add Smaller '@$,'
-# defaults write com.apple.Notes NSUserKeyEquivalents -dict-add Strikethrough @^s
-# defaults write com.apple.Photos NSUserKeyEquivalents -dict-add "Show Edit Tools" @e
-# defaults write com.apple.Preview NSUserKeyEquivalents -dict-add "Actual Size" @9
-# defaults write com.apple.Preview NSUserKeyEquivalents -dict-add "Contact Sheet" @6
-# defaults write com.apple.Preview NSUserKeyEquivalents -dict-add "Continuous Scroll" ^1
-# defaults write com.apple.Preview NSUserKeyEquivalents -dict-add "Go to Page..." '@$G'
-# defaults write com.apple.Preview NSUserKeyEquivalents -dict-add "Hide Sidebar" @1
-# defaults write com.apple.Preview NSUserKeyEquivalents -dict-add "Highlights and Notes" @4
-# defaults write com.apple.Preview NSUserKeyEquivalents -dict-add "Single Page" ^2
-# defaults write com.apple.Preview NSUserKeyEquivalents -dict-add "Table of Contents" @3
-# defaults write com.apple.Preview NSUserKeyEquivalents -dict-add "Two Pages" ^3
-# defaults write com.apple.Preview NSUserKeyEquivalents -dict-add "Zoom to Fit" @0
-# defaults write com.apple.Preview NSUserKeyEquivalents -dict-add Bookmarks @5
-# defaults write com.apple.Preview NSUserKeyEquivalents -dict-add Slideshow @~y
-# defaults write com.apple.Preview NSUserKeyEquivalents -dict-add Thumbnails @2
-# defaults write com.apple.reminders NSUserKeyEquivalents -dict-add "Clear Flag" '@$l'
-# defaults write com.apple.reminders NSUserKeyEquivalents -dict-add "Hide Sidebar" @~s
-# defaults write com.apple.reminders NSUserKeyEquivalents -dict-add Flag '@$l'
-# defaults write com.apple.Safari NSUserKeyEquivalents -dict-add "Hide Sidebar" @~s
-# defaults write com.apple.Safari NSUserKeyEquivalents -dict-add "Show Sidebar" @~s
-# defaults write com.apple.TextEdit NSUserKeyEquivalents -dict-add "Zoom In" -string '@='
-# defaults write com.apple.TextEdit NSUserKeyEquivalents -dict-add "Zoom Out" -string '@-'
-# defaults write com.apple.TextEdit NSUserKeyEquivalents -dict-add Bigger -string '@$='
-# defaults write com.apple.TextEdit NSUserKeyEquivalents -dict-add Smaller -string '@$-'
-# defaults write com.bohemiancoding.sketch3 NSUserKeyEquivalents -dict-add Bigger '@$.'
-# defaults write com.bohemiancoding.sketch3 NSUserKeyEquivalents -dict-add Smaller '@$,'
-# defaults write com.kapeli.dashdoc NSUserKeyEquivalents -dict-add "Show Bookmarks..." @~b
-
 # "Keyboard > Keyboard Shortcuts > Function Keys > Use F1, F2, etc. keys as standard function keys: ON"
 defaults write -g com.apple.keyboard.fnState -bool true
+
+# "Keyboard > Keyboard Shortcuts > Mission Control > Move left a space: OFF"
+set_symbolic_hotkey 80 false 65535 123 8781824
+# "Keyboard > Keyboard Shortcuts > Mission Control > Move right a space: OFF"
+set_symbolic_hotkey 81 false 65535 124 8650752
+
 # "Trackpad > Point & Click > Loop up & data detectors: tap with 3 fingers"
 set_trackpad_option TrackpadThreeFingerTapGesture -int 2
 # "Trackpad > Point & Click > Tap to click: ON"
@@ -850,14 +802,12 @@ defaults write at.obdev.LaunchBar SongPlaybackMode -int 2
 # don't switch to calculator when typing digits
 defaults write at.obdev.LaunchBar SwitchToCalculatorAutomatically -bool false
 # Clipboard
-# clipboard capacity: 1 week
+# Capacity: 1 week
 defaults write at.obdev.LaunchBar ClipboardHistoryCapacity -string -7
+# Action
+defaults write at.obdev.LaunchBar ClipboardHistoryAction -i 2
 # enable clipmerge
 defaults write at.obdev.LaunchBar ClipMergeEnabled -bool true
-# make the clipboard ignore apps
-defaults write at.obdev.LaunchBar ClipboardHistoryIgnoreApplicationsEnabled -bool true
-# ignore these apps in clipboard history
-defaults write at.obdev.LaunchBar ClipboardHistoryIgnoreApplications -array com.apple.keychainaccess com.agilebits.onepassword
 # [✓] Show clipboard history: ⌃⌥⇧⌘V
 defaults write at.obdev.LaunchBar ShowClipboardHistoryHotKey -string 6912@9
 defaults write at.obdev.LaunchBar ShowClipboardHistoryHotKeyEnabled -bool false
@@ -1029,7 +979,6 @@ brew install node
 brew install periphery
 brew install ripgrep
 brew install shellcheck
-brew install tldr
 brew install tmux
 brew install tpm
 brew install trash
@@ -1051,7 +1000,7 @@ brew install --cask wezterm@nightly
 brew install --cask appcleaner
 brew install --cask betterzip
 brew install --cask chatgpt
-brew install --cask cleanshot
+brew install --cask shottr
 brew install --cask cursor
 brew install --cask dash
 brew install --cask dropbox

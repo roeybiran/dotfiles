@@ -18,8 +18,8 @@ bindings = [
 ]
 
 [colors.primary]
-background = '#002b36'
-foreground = '#839496'
+background = '#fdf6e3'
+foreground = '#657b83'
 
 [font]
 normal = { family = "Input Mono", style = "Regular" }

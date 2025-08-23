@@ -21,7 +21,7 @@ local function get_appearance()
 end
 
 wezterm.on('bell', function(window, pane)
-    window:toast_notification("Bell", "Bell rang!", nil, 4000)
+    window:toast_notification("WezTerm", "Bell rang!", nil, 4000)
 end)
 
 -- This function returns the suggested title for a tab.
