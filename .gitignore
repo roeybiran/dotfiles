@@ -1,5 +1,9 @@
 .DS_Store
 private/
-LaunchBar/
-.hammerspoon/
-karabiner/automatic_backups
+.ssh
+hammerspoon
+LaunchBar
+secrets.sh
+zoxide
+*.bak
+

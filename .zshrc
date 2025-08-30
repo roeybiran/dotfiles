@@ -36,12 +36,12 @@ zle -N down-line-or-beginning-search
 bindkey '^y' autosuggest-accept
 
 ### SCRIPTS
-for s in ~/.scripts/* ~/.scripts/private/*; do
+for s in ~/.config/scripts/* ~/.config/scripts/private/*; do
 	source "$s"
 done
 
 ### ALIASES
-source ~/.aliases
+source ~/.config/aliases
 
 ### 3RD-PARTY
 source /opt/homebrew/opt/spaceship/spaceship.zsh

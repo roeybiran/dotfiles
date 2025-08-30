@@ -151,6 +151,28 @@ link() {
 	ln -sFn "$src" "$dst"
 }
 
+mas_install() {
+	local app="$1"
+	local id="$2"
+	if ! mas list | grep -q "$app"; then
+		mas install "$id"
+	fi
+}
+
+brew_install() {
+	local package="$1"
+	if ! brew list -1 | grep -q "$package"; then
+		brew install "$package"
+	fi
+}
+
+brew_cask_install() {
+	local package="$1"
+	if ! brew list --cask -1 | grep -q "$package"; then
+		brew install --cask "$package"
+	fi
+}
+
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
 source "$SCRIPT_DIR/private/secrets.sh"
@@ -187,36 +209,29 @@ mkdir -p ~/Developer &>/dev/null
 # Symlinks
 ########################################################
 # dotfiles
-link "$SCRIPT_DIR/.aliases" "$HOME/.aliases"
 link "$SCRIPT_DIR/.gitconfig" "$HOME/.gitconfig"
 link "$SCRIPT_DIR/.gitignore" "$HOME/.gitignore"
 link "$SCRIPT_DIR/.zshrc" "$HOME/.zshrc"
-link "$SCRIPT_DIR/.scripts" "$HOME/.scripts"
 
 # config
-link "$SCRIPT_DIR/nvim" "$HOME/.config/nvim"
-link "$SCRIPT_DIR/karabiner" "$HOME/.config/karabiner"
-link "$SCRIPT_DIR/alacritty/alacritty.toml" "$HOME/.config/alacritty/alacritty.toml"
-link "$SCRIPT_DIR/kitty" "$HOME/.config/kitty"
-link "$SCRIPT_DIR/atuin/config.toml" "$HOME/.config/atuin/config.toml"
-link "$SCRIPT_DIR/spaceship/spaceship.zsh" "$HOME/.config/spaceship/spaceship.zsh"
-link "$SCRIPT_DIR/ghostty/config" "$HOME/.config/ghostty/config"
-link "$SCRIPT_DIR/wezterm" "$HOME/.config/"
+mv -f "$HOME/.config" ~/.Trash &>/dev/null
+link "$SCRIPT_DIR/config" "$HOME/.config"
 
 # tmux
 link "$SCRIPT_DIR/tmux/.tmux.conf" "$HOME/.tmux.conf"
 link "$SCRIPT_DIR/tmux/.tmux_colorscheme.sh" "$HOME/.tmux_colorscheme.sh"
 
 # apps
-link "$SCRIPT_DIR/.hammerspoon" "$HOME/.hammerspoon"
-link "$SCRIPT_DIR/.dash" "$HOME/.dash"
-link "$SCRIPT_DIR/LaunchBar" "$HOME/Library/Application Support/LaunchBar"
-link "$SCRIPT_DIR/xcode/xcode_macros.plist" "$HOME/Library/Developer/Xcode/UserData/IDETemplateMacros.plist"
-link "$SCRIPT_DIR/xcode/xcode_snippets" "$HOME/Library/Developer/Xcode/UserData/CodeSnippets"
-link "$SCRIPT_DIR/xcode/xcode_themes" "$HOME/Library/Developer/Xcode/UserData/FontAndColorThemes"
-link "$SCRIPT_DIR/finbar_scripts" "$HOME/Library/Application Scripts/com.roeybiran.Finbar"
-link "$SCRIPT_DIR/private/finbar_recents.json" "$HOME/Library/Application Support/com.roeybiran.Finbar/recents.json"
-link "$SCRIPT_DIR/private/.ssh/config" "$HOME/.ssh/config"
+link "$SCRIPT_DIR/apps/LaunchBar" "$HOME/Library/Application Support/LaunchBar"
+link "$SCRIPT_DIR/apps/Xcode/IDETemplateMacros.plist" "$HOME/Library/Developer/Xcode/UserData/IDETemplateMacros.plist"
+link "$SCRIPT_DIR/apps/Xcode/CodeSnippets" "$HOME/Library/Developer/Xcode/UserData/CodeSnippets"
+link "$SCRIPT_DIR/apps/Xcode/FontAndColorThemes" "$HOME/Library/Developer/Xcode/UserData/FontAndColorThemes"
+
+link "$SCRIPT_DIR/apps/Finbar/scripts" "$HOME/Library/Application Scripts/com.roeybiran.Finbar"
+link "$SCRIPT_DIR/apps/Finbar/recents.json" "$HOME/Library/Application Support/com.roeybiran.Finbar/recents.json"
+
+link "$SCRIPT_DIR/.ssh/config" "$HOME/.ssh/config"
+
 link "$SCRIPT_DIR/private/zoxide" "$HOME/Library/Application Support/zoxide"
 
 ################################
@@ -638,7 +653,7 @@ set_mouse_option MouseTwoFingerDoubleTapGesture -int 0
 # fzf
 #################################################################################
 
-brew install "fzf"
+brew_install "fzf"
 
 if [ ! -f ~/.fzf.zsh ] || [ ! -f ~/.fzf.bash ]; then
 	fzfpath=/opt/homebrew/opt/fzf/install
@@ -693,7 +708,7 @@ dst="$HOME/Library/Application Support/Dash/License"
 mkdir -p "$dst"
 mv "$HOME/Library/Preferences/license.dash-license.plist" "$dst/license.dash-license"
 
-defaults write com.kapeli.dashdoc syncFolderPath -string ~/.dash
+defaults write com.kapeli.dashdoc syncFolderPath -string ~/.config/dash
 defaults write com.kapeli.dashdoc shouldSyncBookmarks -bool true
 defaults write com.kapeli.dashdoc shouldSyncDocsets -bool true
 defaults write com.kapeli.dashdoc shouldSyncGeneral -bool true
@@ -848,7 +863,7 @@ defaults write com.todesktop.230313mzl4w4u92 ApplePressAndHoldEnabled -bool fals
 ################################
 # Hammerspoon
 ################################
-# defaults write org.hammerspoon.Hammerspoon MJConfigFile "$HOME/.config/hammerspoon/init.lua"
+defaults write org.hammerspoon.Hammerspoon MJConfigFile "$HOME/.config/hammerspoon/init.lua"
 
 ################################
 # Homerow
@@ -865,12 +880,11 @@ defaults write com.superultra.Homerow show-menubar-icon -bool false
 ################################
 # Xcode
 ################################
-brew install aria2
-brew install xcodes
+brew_install aria2
+brew_install xcodes
 xcodes install --latest
 
 if [ -d /Applications/Xcode.app ]; then
-	sudo xcode-select -s /Applications/Xcode.app/Contents/Developer/
 	sudo xcodebuild -license accept
 	sudo /usr/sbin/DevToolsSecurity --enable 1>/dev/null 2>&1
 fi
@@ -965,83 +979,70 @@ defaults write com.pfiddlesoft.uibrowser RosettaAlertsSuppressed -bool true
 ################################
 # INSTALLATIONS
 ################################
-brew install atuin
-brew install bat
-brew install eza
-brew install fd
-brew install ffmpeg
-brew install font-symbols-only-nerd-font
-brew install gh
-brew install git-extras
-brew install git-lfs
-brew install icdiff
-brew install jq
-brew install lazygit
-brew install mas
-brew install neovim
-brew install node
-brew install periphery
-brew install ripgrep
-brew install shellcheck
-brew install zsh-autosuggestions
+brew_install atuin
+brew_install bat
+brew_install eza
+brew_install fd
+brew_install ffmpeg
+brew_install font-symbols-only-nerd-font
+brew_install gh
+brew_install git-extras
+brew_install git-lfs
+brew_install icdiff
+brew_install jq
+brew_install lazygit
+brew_install mas
+brew_install neovim
+brew_install node
+brew_install periphery
+brew_install ripgrep
+brew_install shellcheck
+brew_install zsh-autosuggestions
+brew_install graphicsmagick # for create-dmg
+brew_install imagemagick # for create-dmg
+brew_install wp-cli
+brew_install zoxide
 
-brew install spaceship
+brew_install spaceship
 if [ ! -d "$HOME/.zsh/spaceship-vi-mode" ]; then
 	mkdir -p "$HOME/.zsh"
 	git clone --depth=1 https://github.com/spaceship-prompt/spaceship-vi-mode.git "$HOME/.zsh/spaceship-vi-mode"
 fi
 
-brew install wp-cli
-brew install zoxide
-
-# https://github.com/sindresorhus/create-dmg
-if ! command create-dmg; then
-	npm install --global create-dmg
-	brew install graphicsmagick
-	brew install imagemagick
-fi
-
+npm install -gcreate-dmg
 npm install -g @anthropic-ai/claude-code
 
-brew install --cask appcleaner
-brew install --cask betterzip
-brew install --cask chatgpt
-brew install --cask cursor
-brew install --cask dash
-brew install --cask dropbox
-brew install --cask figma
-brew install --cask finbar
-brew install --cask font-input
-brew install --cask google-chrome
-brew install --cask hammerspoon
-brew install --cask homerow
-brew install --cask karabiner-elements
-brew install --cask launchbar
-brew install --cask little-snitch
-brew install --cask local
-brew install --cask macdown
-brew install --cask qlmarkdown
-brew install --cask qlvideo
-brew install --cask raycast
-brew install --cask script-debugger
-brew install --cask sf-symbols
-brew install --cask shottr
-brew install --cask slack
-brew install --cask spotify
-brew install --cask syntax-highlight
-brew install --cask the-unarchiver
-brew install --cask transmit
-brew install --cask ui-browser
-brew install --cask visual-studio-code
-brew install --cask wezterm@nightly
-
-function mas_install() {
-	local app="$1"
-	local id="$2"
-	if ! mas list | grep -q "$app"; then
-		mas install "$id"
-	fi
-}
+brew_cask_install appcleaner
+brew_cask_install betterzip
+brew_cask_install chatgpt
+brew_cask_install cursor
+brew_cask_install dash
+brew_cask_install dropbox
+brew_cask_install figma
+brew_cask_install finbar
+brew_cask_install font-input
+brew_cask_install google-chrome
+brew_cask_install hammerspoon
+brew_cask_install homerow
+brew_cask_install karabiner-elements
+brew_cask_install launchbar
+brew_cask_install little-snitch
+brew_cask_install local
+brew_cask_install macdown
+brew_cask_install qlmarkdown
+brew_cask_install qlvideo
+brew_cask_install raycast
+brew_cask_install script-debugger
+brew_cask_install sf-symbols
+brew_cask_install shottr
+brew_cask_install slack
+brew_cask_install spotify
+brew_cask_install syntax-highlight
+brew_cask_install the-unarchiver
+brew_cask_install transmit
+# brew_cask_install ui-browser
+brew_cask_install visual-studio-code
+brew_cask_install wezterm@nightly
 
 mas_install "Developer" 640199958
 mas_install "Hush" 1544743900

@@ -37,7 +37,7 @@ alias gtl="git tag -l"
 alias gpr="git pull --rebase"
 alias gcf="git add . && git fixup"
 alias gsh="git show"
-alias c!="claude --dangerously-skip-permissions"
+alias cc="claude --dangerously-skip-permissions"
 
 function gcampu()
 {
