@@ -1,11 +1,10 @@
 #!/usr/bin/env bash
 
-# set -e
-# set -u
-# set -o pipefail
-set +x 
-
+# Ask for the administrator password upfront
 sudo -v
+
+# Keep-alive: update existing `sudo` time stamp until `.macos` has finished
+while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 # constants
 my_login_items=(
@@ -152,7 +151,9 @@ link() {
 	ln -sFn "$src" "$dst"
 }
 
-source "$PWD/private/secrets.sh"
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+
+source "$SCRIPT_DIR/private/secrets.sh"
 
 if ! command -v brew &>/dev/null; then
 	# install Homebrew
@@ -186,41 +187,37 @@ mkdir -p ~/Developer &>/dev/null
 # Symlinks
 ########################################################
 # dotfiles
-link "$PWD/.aliases" "$HOME/.aliases"
-link "$PWD/.gitconfig" "$HOME/.gitconfig"
-link "$PWD/.gitignore" "$HOME/.gitignore"
-link "$PWD/.zshrc" "$HOME/.zshrc"
-link "$PWD/.scripts" "$HOME/.scripts"
-link "$PWD/claude_code/CLAUDE.md" "$HOME/.claude/CLAUDE.md"
-link "$PWD/claude_code/settings.json" "$HOME/.claude/settings.json"
+link "$SCRIPT_DIR/.aliases" "$HOME/.aliases"
+link "$SCRIPT_DIR/.gitconfig" "$HOME/.gitconfig"
+link "$SCRIPT_DIR/.gitignore" "$HOME/.gitignore"
+link "$SCRIPT_DIR/.zshrc" "$HOME/.zshrc"
+link "$SCRIPT_DIR/.scripts" "$HOME/.scripts"
 
 # config
-link "$PWD/nvim" "$HOME/.config/nvim"
-link "$PWD/karabiner" "$HOME/.config/karabiner"
-link "$PWD/alacritty/alacritty.toml" "$HOME/.config/alacritty/alacritty.toml"
-link "$PWD/kitty" "$HOME/.config/kitty"
-link "$PWD/atuin/config.toml" "$HOME/.config/atuin/config.toml"
-link "$PWD/spaceship/spaceship.zsh" "$HOME/.config/spaceship/spaceship.zsh"
-link "$PWD/ghostty/config" "$HOME/.config/ghostty/config"
+link "$SCRIPT_DIR/nvim" "$HOME/.config/nvim"
+link "$SCRIPT_DIR/karabiner" "$HOME/.config/karabiner"
+link "$SCRIPT_DIR/alacritty/alacritty.toml" "$HOME/.config/alacritty/alacritty.toml"
+link "$SCRIPT_DIR/kitty" "$HOME/.config/kitty"
+link "$SCRIPT_DIR/atuin/config.toml" "$HOME/.config/atuin/config.toml"
+link "$SCRIPT_DIR/spaceship/spaceship.zsh" "$HOME/.config/spaceship/spaceship.zsh"
+link "$SCRIPT_DIR/ghostty/config" "$HOME/.config/ghostty/config"
+link "$SCRIPT_DIR/wezterm" "$HOME/.config/"
 
 # tmux
-link "$PWD/tmux/.tmux.conf" "$HOME/.tmux.conf"
-link "$PWD/tmux/.tmux_colorscheme.sh" "$HOME/.tmux_colorscheme.sh"
+link "$SCRIPT_DIR/tmux/.tmux.conf" "$HOME/.tmux.conf"
+link "$SCRIPT_DIR/tmux/.tmux_colorscheme.sh" "$HOME/.tmux_colorscheme.sh"
 
 # apps
-link "$PWD/.hammerspoon" "$HOME/.hammerspoon"
-link "$PWD/.dash" "$HOME/.dash"
-link "$PWD/LaunchBar" "$HOME/Library/Application Support/LaunchBar"
-link "$PWD/xcode/xcode_macros.plist" "$HOME/Library/Developer/Xcode/UserData/IDETemplateMacros.plist"
-link "$PWD/xcode/xcode_snippets" "$HOME/Library/Developer/Xcode/UserData/CodeSnippets"
-link "$PWD/xcode/xcode_themes" "$HOME/Library/Developer/Xcode/UserData/FontAndColorThemes"
-link "$PWD/finbar_scripts" "$HOME/Library/Application Scripts/com.roeybiran.Finbar"
-
-# private
-link "$PWD/private/.history" "$HOME/.history"
-link "$PWD/private/.ssh/config" "$HOME/.ssh/config"
-link "$PWD/private/finbar_recents.json" "$HOME/Library/Application Support/com.roeybiran.Finbar/recents.json"
-link "$PWD/private/zoxide" "$HOME/Library/Application Support/zoxide"
+link "$SCRIPT_DIR/.hammerspoon" "$HOME/.hammerspoon"
+link "$SCRIPT_DIR/.dash" "$HOME/.dash"
+link "$SCRIPT_DIR/LaunchBar" "$HOME/Library/Application Support/LaunchBar"
+link "$SCRIPT_DIR/xcode/xcode_macros.plist" "$HOME/Library/Developer/Xcode/UserData/IDETemplateMacros.plist"
+link "$SCRIPT_DIR/xcode/xcode_snippets" "$HOME/Library/Developer/Xcode/UserData/CodeSnippets"
+link "$SCRIPT_DIR/xcode/xcode_themes" "$HOME/Library/Developer/Xcode/UserData/FontAndColorThemes"
+link "$SCRIPT_DIR/finbar_scripts" "$HOME/Library/Application Scripts/com.roeybiran.Finbar"
+link "$SCRIPT_DIR/private/finbar_recents.json" "$HOME/Library/Application Support/com.roeybiran.Finbar/recents.json"
+link "$SCRIPT_DIR/private/.ssh/config" "$HOME/.ssh/config"
+link "$SCRIPT_DIR/private/zoxide" "$HOME/Library/Application Support/zoxide"
 
 ################################
 # Archive Utility
@@ -732,6 +729,7 @@ defaults write com.roeybiran.Finbar SUEnableAutomaticChecks -bool true
 defaults write com.roeybiran.Finbar SUHasLaunchedBefore -bool true
 defaults write com.roeybiran.Finbar license -string "$FINBAR_LICENSE"
 defaults write com.roeybiran.Finbar preferredScreen -string withKeyboardFocus
+defaults write com.roeybiran.Finbar browsingMode -int 1
 defaults write com.roeybiran.Finbar menuBarPredicate -array \
 	'{
   "description" = "Apple Menu";
@@ -805,7 +803,7 @@ defaults write at.obdev.LaunchBar SwitchToCalculatorAutomatically -bool false
 # Capacity: 1 week
 defaults write at.obdev.LaunchBar ClipboardHistoryCapacity -string -7
 # Action
-defaults write at.obdev.LaunchBar ClipboardHistoryAction -i 2
+defaults write at.obdev.LaunchBar ClipboardHistoryAction -int 2
 # enable clipmerge
 defaults write at.obdev.LaunchBar ClipMergeEnabled -bool true
 # [✓] Show clipboard history: ⌃⌥⇧⌘V
@@ -846,6 +844,11 @@ defaults write com.microsoft.VSCodeInsiders ApplePressAndHoldEnabled -bool false
 # Cursor
 ################################
 defaults write com.todesktop.230313mzl4w4u92 ApplePressAndHoldEnabled -bool false
+
+################################
+# Hammerspoon
+################################
+# defaults write org.hammerspoon.Hammerspoon MJConfigFile "$HOME/.config/hammerspoon/init.lua"
 
 ################################
 # Homerow
@@ -962,6 +965,7 @@ defaults write com.pfiddlesoft.uibrowser RosettaAlertsSuppressed -bool true
 ################################
 # INSTALLATIONS
 ################################
+brew install atuin
 brew install bat
 brew install eza
 brew install fd
@@ -979,9 +983,14 @@ brew install node
 brew install periphery
 brew install ripgrep
 brew install shellcheck
-brew install tmux
-brew install tpm
-brew install trash
+brew install zsh-autosuggestions
+
+brew install spaceship
+if [ ! -d "$HOME/.zsh/spaceship-vi-mode" ]; then
+	mkdir -p "$HOME/.zsh"
+	git clone --depth=1 https://github.com/spaceship-prompt/spaceship-vi-mode.git "$HOME/.zsh/spaceship-vi-mode"
+fi
+
 brew install wp-cli
 brew install zoxide
 
@@ -992,20 +1001,18 @@ if ! command create-dmg; then
 	brew install imagemagick
 fi
 
-# brew install --cask alacritty
-# brew install --cask ghostty
-# brew install --cask kitty
-brew install --cask wezterm@nightly
+npm install -g @anthropic-ai/claude-code
 
 brew install --cask appcleaner
 brew install --cask betterzip
 brew install --cask chatgpt
-brew install --cask shottr
 brew install --cask cursor
 brew install --cask dash
 brew install --cask dropbox
 brew install --cask figma
+brew install --cask finbar
 brew install --cask font-input
+brew install --cask google-chrome
 brew install --cask hammerspoon
 brew install --cask homerow
 brew install --cask karabiner-elements
@@ -1018,6 +1025,7 @@ brew install --cask qlvideo
 brew install --cask raycast
 brew install --cask script-debugger
 brew install --cask sf-symbols
+brew install --cask shottr
 brew install --cask slack
 brew install --cask spotify
 brew install --cask syntax-highlight
@@ -1025,15 +1033,24 @@ brew install --cask the-unarchiver
 brew install --cask transmit
 brew install --cask ui-browser
 brew install --cask visual-studio-code
+brew install --cask wezterm@nightly
 
-mas install 640199958  # Developer
-mas install 1544743900 # Hush
-mas install 409183694  # Keynote
-mas install 409203825  # Numbers
-mas install 409201541  # Pages
-mas install 1584519802 # Vimlike
-mas install 1437310115 # Select Like A Boss For Safari
-mas install 1522267256 # Shareful
-mas install 1607635845 # Velja
-mas install 310633997  # WhatsApp
-mas install 1320666476 # Wipr
+function mas_install() {
+	local app="$1"
+	local id="$2"
+	if ! mas list | grep -q "$app"; then
+		mas install "$id"
+	fi
+}
+
+mas_install "Developer" 640199958
+mas_install "Hush" 1544743900
+mas_install "Keynote" 409183694
+mas_install "Numbers" 409203825
+mas_install "Pages" 409201541
+mas_install "Vimlike" 1584519802
+mas_install "Select Like A Boss For Safari" 1437310115
+mas_install "Shareful" 1522267256
+mas_install "Velja" 1607635845
+mas_install "WhatsApp" 310633997
+mas_install "Wipr" 1320666476
