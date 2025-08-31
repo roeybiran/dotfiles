@@ -7,3 +7,5 @@ secrets.sh
 zoxide
 *.bak
 
+config/*
+!config/alacritty!config/atuin!config/dash!config/ghostty!config/hammerspoon!config/karabiner!config/kitty!config/nvim!config/scripts!config/spaceship!config/wezterm!config/aliases

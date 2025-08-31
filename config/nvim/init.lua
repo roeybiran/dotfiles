@@ -806,26 +806,6 @@ require('lazy').setup({
     end,
   },
 
-  {
-    'loctvl842/monokai-pro.nvim',
-    lazy = false,
-    priority = 1000,
-    config = function(_, opts)
-      macOSTheme()
-      require('monokai-pro').setup(opts)
-      vim.cmd.colorscheme 'monokai-pro'
-    end,
-  },
-
-  -- {
-  --   'tanvirtin/monokai.nvim',
-  --   lazy = true,
-  --   priority = 1000,
-  --   config = function(_, opts)
-  --     require('monokai').setup(opts)
-  --   end,
-  -- },
-
   -- Highlight todo, notes, etc in comments
   -- { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
 

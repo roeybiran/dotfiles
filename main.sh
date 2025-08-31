@@ -663,15 +663,6 @@ if [ ! -f ~/.fzf.zsh ] || [ ! -f ~/.fzf.bash ]; then
 fi
 
 ################################
-# Action Editor
-################################
-defaults write at.obdev.LaunchBar.ActionEditor myBundleIdentifier -string com.roeybiran
-defaults write at.obdev.LaunchBar.ActionEditor personalInformationAuthor -string "Roey Biran"
-defaults write at.obdev.LaunchBar.ActionEditor personalInformationEmailString -string roeybiran@icloud.com
-defaults write at.obdev.LaunchBar.ActionEditor personalInformationWebsite -string https://github.com/roeybiran
-defaults write at.obdev.LaunchBar.ActionEditor personalInformationTwitter -string @RoeyBiran
-
-################################
 # ChatGPT
 ################################
 # Show in Menubar: Never
@@ -821,9 +812,9 @@ defaults write at.obdev.LaunchBar ClipboardHistoryCapacity -string -7
 defaults write at.obdev.LaunchBar ClipboardHistoryAction -int 2
 # enable clipmerge
 defaults write at.obdev.LaunchBar ClipMergeEnabled -bool true
-# [✓] Show clipboard history: ⌃⌥⇧⌘V
+# [✓] Show clipboard history: ⌃⌥⇧⌘G
 defaults write at.obdev.LaunchBar ShowClipboardHistoryHotKey -string 6912@9
-defaults write at.obdev.LaunchBar ShowClipboardHistoryHotKeyEnabled -bool false
+defaults write at.obdev.LaunchBar ShowClipboardHistoryHotKeyEnabled -bool true
 # [ ] Select from history
 defaults write at.obdev.LaunchBar SelectFromClipboardHistoryHotKeyEnabled -bool false
 # [ ] Paste and remove from history
@@ -842,6 +833,12 @@ defaults write at.obdev.LaunchBar WelcomeWindowVersion -int 2
 # snippets
 defaults write at.obdev.LaunchBar SnippetsHotKey -string 6912@27
 defaults write at.obdev.LaunchBar SnippetsHotKeyEnabled -bool false
+# action editor
+defaults write at.obdev.LaunchBar.ActionEditor myBundleIdentifier -string com.roeybiran
+defaults write at.obdev.LaunchBar.ActionEditor personalInformationAuthor -string "Roey Biran"
+defaults write at.obdev.LaunchBar.ActionEditor personalInformationEmailString -string roeybiran@icloud.com
+defaults write at.obdev.LaunchBar.ActionEditor personalInformationWebsite -string https://github.com/roeybiran
+defaults write at.obdev.LaunchBar.ActionEditor personalInformationTwitter -string @RoeyBiran
 
 ################################
 # Velja
