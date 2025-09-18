@@ -8,14 +8,13 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 # constants
 my_login_items=(
-	/Applications/Hammerspoon.app
-	/Applications/Raycast.app
 	/Applications/Finbar.app
-	/Applications/Dropbox.app
+	/Applications/Hammerspoon.app
 	/Applications/Knobby.app
-	/Applications/Velja.app
 	/Applications/LaunchBar.app
-	/Applications/kitty.app
+	/Applications/Raycast.app
+	/Applications/Velja.app
+	/Applications/WezTerm.app
 )
 
 add_login_items() {
@@ -215,7 +214,9 @@ link "$SCRIPT_DIR/.zshrc" "$HOME/.zshrc"
 
 # config
 mv -f "$HOME/.config" ~/.Trash &>/dev/null
-link "$SCRIPT_DIR/config" "$HOME/.config"
+for f in "$SCRIPT_DIR/config"/*; do
+	link "$f" ~/.config/"$(basename "$f")"
+done
 
 # tmux
 link "$SCRIPT_DIR/tmux/.tmux.conf" "$HOME/.tmux.conf"
@@ -813,7 +814,7 @@ defaults write at.obdev.LaunchBar ClipboardHistoryAction -int 2
 # enable clipmerge
 defaults write at.obdev.LaunchBar ClipMergeEnabled -bool true
 # [✓] Show clipboard history: ⌃⌥⇧⌘G
-defaults write at.obdev.LaunchBar ShowClipboardHistoryHotKey -string 6912@9
+defaults write at.obdev.LaunchBar ShowClipboardHistoryHotKey -string 6912@5
 defaults write at.obdev.LaunchBar ShowClipboardHistoryHotKeyEnabled -bool true
 # [ ] Select from history
 defaults write at.obdev.LaunchBar SelectFromClipboardHistoryHotKeyEnabled -bool false
@@ -985,7 +986,9 @@ brew_install font-symbols-only-nerd-font
 brew_install gh
 brew_install git-extras
 brew_install git-lfs
+brew_install graphicsmagick # for create-dmg
 brew_install icdiff
+brew_install imagemagick # for create-dmg
 brew_install jq
 brew_install lazygit
 brew_install mas
@@ -994,11 +997,9 @@ brew_install node
 brew_install periphery
 brew_install ripgrep
 brew_install shellcheck
-brew_install zsh-autosuggestions
-brew_install graphicsmagick # for create-dmg
-brew_install imagemagick # for create-dmg
 brew_install wp-cli
 brew_install zoxide
+brew_install zsh-autosuggestions
 
 brew_install spaceship
 if [ ! -d "$HOME/.zsh/spaceship-vi-mode" ]; then
@@ -1006,11 +1007,10 @@ if [ ! -d "$HOME/.zsh/spaceship-vi-mode" ]; then
 	git clone --depth=1 https://github.com/spaceship-prompt/spaceship-vi-mode.git "$HOME/.zsh/spaceship-vi-mode"
 fi
 
-npm install -gcreate-dmg
+npm install -g create-dmg
 npm install -g @anthropic-ai/claude-code
 
 brew_cask_install appcleaner
-brew_cask_install betterzip
 brew_cask_install chatgpt
 brew_cask_install cursor
 brew_cask_install dash
@@ -1025,19 +1025,14 @@ brew_cask_install karabiner-elements
 brew_cask_install launchbar
 brew_cask_install little-snitch
 brew_cask_install local
-brew_cask_install macdown
-brew_cask_install qlmarkdown
-brew_cask_install qlvideo
 brew_cask_install raycast
 brew_cask_install script-debugger
 brew_cask_install sf-symbols
 brew_cask_install shottr
 brew_cask_install slack
 brew_cask_install spotify
-brew_cask_install syntax-highlight
 brew_cask_install the-unarchiver
 brew_cask_install transmit
-# brew_cask_install ui-browser
 brew_cask_install visual-studio-code
 brew_cask_install wezterm@nightly
 

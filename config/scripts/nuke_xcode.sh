@@ -15,11 +15,11 @@ function nuke_xcode() {
 		return
 	fi
 
-	find "$PWD" -path "*project.xcworkspace/xcshareddata/swiftpm/Package.resolved" -delete
+	find "$PWD" -path "Package.resolved" -delete
 
 	for f in ~/Library/Developer/Xcode/DerivedData/"$name"*; do
 		rm -rf "$f"
 	done
 
-	rm -rf ~/Library/org.swift.swiftpm ~/Library/Caches/org.swift.swiftpm ~/Library/Developer/Xcode/DerivedData/"$(basename "$PWD")"*
+	rm -rf ~/Library/org.swift.swiftpm ~/Library/Caches/org.swift.swiftpm ~/.swiftpm
 }

@@ -38,6 +38,7 @@ alias gpr="git pull --rebase"
 alias gcf="git add . && git fixup"
 alias gsh="git show"
 alias cc="claude --dangerously-skip-permissions"
+alias amend="gca -n --no-edit --amend"
 
 function gcampu()
 {

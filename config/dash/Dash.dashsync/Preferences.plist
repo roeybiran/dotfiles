@@ -9,7 +9,7 @@
 			<key>Regular_Expressions</key>
 			<dict>
 				<key>date</key>
-				<date>2025-08-30T11:33:36Z</date>
+				<date>2025-09-18T10:23:56Z</date>
 				<key>entry</key>
 				<dict>
 					<key>aliases</key>
@@ -401,7 +401,7 @@
 			<key>Hammerspoon</key>
 			<dict>
 				<key>date</key>
-				<date>2025-08-30T11:33:40Z</date>
+				<date>2025-09-18T10:24:00Z</date>
 				<key>entry</key>
 				<dict>
 					<key>aliases</key>
@@ -876,52 +876,52 @@
 			<key>http://kapeli.com/feeds/Apple_API_Reference.xml</key>
 			<dict>
 				<key>date</key>
-				<date>2025-08-30T11:34:04Z</date>
+				<date>2025-09-18T10:24:10Z</date>
 			</dict>
 			<key>http://kapeli.com/feeds/Bash.xml</key>
 			<dict>
 				<key>date</key>
-				<date>2025-08-30T11:33:40Z</date>
+				<date>2025-09-18T10:24:00Z</date>
 			</dict>
 			<key>http://kapeli.com/feeds/CSS.xml</key>
 			<dict>
 				<key>date</key>
-				<date>2025-08-30T11:34:04Z</date>
+				<date>2025-09-18T10:24:15Z</date>
 			</dict>
 			<key>http://kapeli.com/feeds/HTML.xml</key>
 			<dict>
 				<key>date</key>
-				<date>2025-08-30T11:34:23Z</date>
+				<date>2025-09-18T10:24:16Z</date>
 			</dict>
 			<key>http://kapeli.com/feeds/JavaScript.xml</key>
 			<dict>
 				<key>date</key>
-				<date>2025-08-30T11:34:38Z</date>
+				<date>2025-09-18T10:24:34Z</date>
 			</dict>
 			<key>http://kapeli.com/feeds/Man_Pages.xml</key>
 			<dict>
 				<key>date</key>
-				<date>2025-08-30T11:34:24Z</date>
+				<date>2025-09-18T10:24:16Z</date>
 			</dict>
 			<key>http://kapeli.com/feeds/PHP.xml</key>
 			<dict>
 				<key>date</key>
-				<date>2025-08-30T11:34:31Z</date>
+				<date>2025-09-18T10:24:25Z</date>
 			</dict>
 			<key>http://kapeli.com/feeds/TypeScript.xml</key>
 			<dict>
 				<key>date</key>
-				<date>2025-08-30T11:34:32Z</date>
+				<date>2025-09-18T10:24:19Z</date>
 			</dict>
 			<key>http://kapeli.com/feeds/Vim.xml</key>
 			<dict>
 				<key>date</key>
-				<date>2025-08-30T11:34:09Z</date>
+				<date>2025-09-18T10:24:19Z</date>
 			</dict>
 			<key>http://kapeli.com/feeds/WordPress.xml</key>
 			<dict>
 				<key>date</key>
-				<date>2025-08-30T11:35:42Z</date>
+				<date>2025-09-18T10:24:53Z</date>
 			</dict>
 		</dict>
 		<key>uninstalled</key>
