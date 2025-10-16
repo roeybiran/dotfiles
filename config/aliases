@@ -37,10 +37,11 @@ alias gtl="git tag -l"
 alias gpr="git pull --rebase"
 alias gcf="git add . && git fixup"
 alias gsh="git show"
-alias cc="claude --dangerously-skip-permissions"
 alias amend="gca -n --no-edit --amend"
 
-function gcampu()
-{
+alias cc="claude --dangerously-skip-permissions"
+alias cx="codex --dangerously-bypass-approvals-and-sandbox"
+
+function gcampu() {
     gca -m "$1" && git push
 }

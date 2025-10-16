@@ -9,8 +9,9 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 # constants
 my_login_items=(
 	/Applications/Finbar.app
-	/Applications/Hammerspoon.app
+	/Applications/Homerow.app
 	/Applications/Knobby.app
+	/Applications/Hammerspoon.app
 	/Applications/LaunchBar.app
 	/Applications/Raycast.app
 	/Applications/Velja.app
@@ -219,8 +220,8 @@ for f in "$SCRIPT_DIR/config"/*; do
 done
 
 # tmux
-link "$SCRIPT_DIR/tmux/.tmux.conf" "$HOME/.tmux.conf"
-link "$SCRIPT_DIR/tmux/.tmux_colorscheme.sh" "$HOME/.tmux_colorscheme.sh"
+# link "$SCRIPT_DIR/tmux/.tmux.conf" "$HOME/.tmux.conf"
+# link "$SCRIPT_DIR/tmux/.tmux_colorscheme.sh" "$HOME/.tmux_colorscheme.sh"
 
 # apps
 link "$SCRIPT_DIR/apps/LaunchBar" "$HOME/Library/Application Support/LaunchBar"
@@ -317,6 +318,8 @@ defaults write com.apple.finder ShowPathbar -bool true
 defaults write com.apple.finder ShowStatusBar -bool true
 # "View > Show Preview: ON"
 defaults write com.apple.finder ShowPreviewPane -bool true
+# Use list view in all Finder windows by default
+defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
 
 ################################
 # Mail
@@ -760,6 +763,24 @@ defaults write com.roeybiran.Finbar menuBarPredicate -array \
 }'
 
 ################################
+# Syphon
+################################
+# defaults write com.roeybiran.Syphon didSetDefaultShortcuts -bool true
+# defaults write com.roeybiran.Syphon RBShortcutKit_Shortcuts -dict-add selectNextWindow '{ keyCode = 50; modifiers = 256; }'
+# defaults write com.roeybiran.Syphon RBShortcutKit_Shortcuts -dict-add selectPreviousWindow '{ keyCode = 50; modifiers = 768; }'
+defaults write com.roeybiran.Syphon RBInputSourceKit_preferredInputSourceID -string "com.apple.keylayout.ABC"
+defaults write com.roeybiran.Syphon RBSettingsKit_IsWindowFloating -bool true
+defaults write com.roeybiran.Syphon SUAutomaticallyUpdate -bool true
+defaults write com.roeybiran.Syphon SUEnableAutomaticChecks -bool true
+defaults write com.roeybiran.Syphon SUHasLaunchedBefore -bool true
+defaults write com.roeybiran.Syphon didOnboard -bool true
+defaults write com.roeybiran.Syphon hiddenAppsAppearCompact -bool true
+defaults write com.roeybiran.Syphon hiddenAppsSortLast -bool true
+defaults write com.roeybiran.Syphon minimizedWindowsSortLast -bool true
+defaults write com.roeybiran.Syphon showAtLeastOneWindow -bool true
+defaults write com.roeybiran.Syphon license -string "$SYPHON_LICENSE"
+
+################################
 # Knobby
 ################################
 
@@ -962,7 +983,6 @@ defaults write com.pfiddlesoft.uibrowser selectedElementDestroyedAlertSuppressed
 defaults write com.pfiddlesoft.uibrowser applescriptWindowOpenAlertSuppressed -bool true
 # skip welcome
 defaults write com.pfiddlesoft.uibrowser "First run" -bool false
-# Send scripts to Script Debugger
 defaults write com.pfiddlesoft.uibrowser "Use AppleScript URL Protocol" -bool false
 defaults write com.pfiddlesoft.uibrowser "Use AppleScript default script editor" -bool false
 defaults write com.pfiddlesoft.uibrowser "Default script editor" -bool true
@@ -1026,7 +1046,6 @@ brew_cask_install launchbar
 brew_cask_install little-snitch
 brew_cask_install local
 brew_cask_install raycast
-brew_cask_install script-debugger
 brew_cask_install sf-symbols
 brew_cask_install shottr
 brew_cask_install slack

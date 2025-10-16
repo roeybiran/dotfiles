@@ -9,7 +9,6 @@ config.show_tab_index_in_tab_bar = false
 config.audible_bell = 'Disabled'
 config.window_close_confirmation = 'NeverPrompt'
 
-
 -- https://wezterm.org/config/lua/wezterm.gui/get_appearance.html
 -- wezterm.gui is not available to the mux server, so take care to
 -- do something reasonable when this config is evaluated by the mux
@@ -127,6 +126,11 @@ config.keys = {
         key = 'k',
         mods = 'SUPER',
         action = wezterm.action.ClearScrollback 'ScrollbackAndViewport',
+    },
+    {
+        key = 'W',
+        mods = 'SUPER|SHIFT',
+        action = wezterm.action.CloseCurrentTab { confirm = false },
     },
     -- {
     --     key = 'd',
