@@ -76,6 +76,9 @@ end
 
 config.color_scheme = scheme_for_appearance(get_appearance())
 
+-- Disable ligatures
+config.harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' }
+
 config.keys = {
     {
         key = 'g',

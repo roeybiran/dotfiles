@@ -1,0 +1,6 @@
+[submodule "apps/LaunchBar/Actions"]
+	path = apps/LaunchBar/Actions
+	url = https://github.com/roeybiran/launchbar-actions
+[submodule "config/hammerspoon"]
+	path = config/hammerspoon
+	url = https://github.com/roeybiran/.hammerspoon

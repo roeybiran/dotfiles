@@ -1006,9 +1006,7 @@ brew_install font-symbols-only-nerd-font
 brew_install gh
 brew_install git-extras
 brew_install git-lfs
-brew_install graphicsmagick # for create-dmg
 brew_install icdiff
-brew_install imagemagick # for create-dmg
 brew_install jq
 brew_install lazygit
 brew_install mas
@@ -1020,6 +1018,11 @@ brew_install shellcheck
 brew_install wp-cli
 brew_install zoxide
 brew_install zsh-autosuggestions
+brew_install codex
+
+# for create-dmg
+brew_install graphicsmagick
+brew_install imagemagick
 
 brew_install spaceship
 if [ ! -d "$HOME/.zsh/spaceship-vi-mode" ]; then
@@ -1028,6 +1031,7 @@ if [ ! -d "$HOME/.zsh/spaceship-vi-mode" ]; then
 fi
 
 npm install -g create-dmg
+npm install -g np
 npm install -g @anthropic-ai/claude-code
 
 brew_cask_install appcleaner
