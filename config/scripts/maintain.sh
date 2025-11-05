@@ -2,7 +2,7 @@
 
 # https://github.com/keith/reminders-cli
 
-function maintain() {
+maintain() {
 	# set -euo pipefail
 
 	echo "Updating package managers..."
@@ -31,9 +31,6 @@ function maintain() {
 	echo ">> brew doctor"
 	brew doctor
 
-	# launchbar housekeeping
-	# remove logging for all actions
-	# for f in "$HOME/Library/Application Support/LaunchBar/Actions/"*".lbaction/Contents/Info.plist"; do
-	# 	/usr/libexec/PlistBuddy -c "Delete :LBDebugLogEnabled" "$f" 2>/dev/null
-	# done
+	backup_repos_from_github --dir="$HOME/Library/Mobile Documents/com~apple~CloudDocs/stuff/projects/_code"
+	backup_dotfiles
 }

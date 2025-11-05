@@ -39,6 +39,8 @@ alias gcf="git add . && git fixup"
 alias gsh="git show"
 alias amend="gca -n --no-edit --amend"
 
+alias update="brew update; brew upgrade; mas upgrade"
+
 alias cc="claude --dangerously-skip-permissions"
 alias cx="codex --dangerously-bypass-approvals-and-sandbox"
 alias ca="cursor-agent -f"

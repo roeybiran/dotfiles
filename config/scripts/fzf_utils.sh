@@ -32,7 +32,7 @@ git_fuzzy_add() {
 
 git_fuzzy_checkout() {
 	if [ -z "$1" ]; then
-		git switch "$(git for-each-ref --sort=-creatordate refs/heads/ --format="%(refname:short)" | fzf --header="SWITCH TO BRANCH…")" 2>/dev/null
+		git switch "$(git for-each-ref --sort=-creatordate refs/heads/ --format="%(refname:short)" | fzf --header="SWITCH TO BRANCH…")"
 		return
 	fi
 
@@ -42,7 +42,7 @@ git_fuzzy_checkout() {
 	fi
 
 	if [ "$1" = "m" ]; then
-		git switch $(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@')
+		git switch "$(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@')"
 		return
 	fi
 

@@ -46,8 +46,8 @@ source ~/.config/aliases
 ### 3RD-PARTY
 source /opt/homebrew/opt/spaceship/spaceship.zsh
 source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+FZF_CTRL_R_COMMAND= # disable fzf's default Ctrl+R binding in favor of atuin
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-bindkey -r '^R' # disable fzf's default Ctrl+R binding
 eval "$(zoxide init zsh)"
 eval "$(atuin init zsh)"
 export PATH="$HOME/.local/bin:$PATH"

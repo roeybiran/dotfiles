@@ -9,15 +9,13 @@ config.show_tab_index_in_tab_bar = false
 config.audible_bell = 'Disabled'
 config.window_close_confirmation = 'NeverPrompt'
 
--- https://wezterm.org/config/lua/wezterm.gui/get_appearance.html
--- wezterm.gui is not available to the mux server, so take care to
--- do something reasonable when this config is evaluated by the mux
-local function get_appearance()
-    if wezterm.gui then
-        return wezterm.gui.get_appearance()
-    end
-    return 'Dark'
-end
+config.enable_scroll_bar = true
+config.window_padding = {
+    left = 0,
+    right = "2cell",
+    top = 0,
+    bottom = 0,
+}
 
 wezterm.on('bell', function(window, pane)
     window:toast_notification("WezTerm", "Bell rang!", nil, 4000)
@@ -49,6 +47,9 @@ local function tab_title(tab)
     -- Otherwise, use the title from the active pane
     -- in that tab
     local pane_info = tab.active_pane;
+    if not pane_info.current_working_dir then -- when in debug overlay
+        return ''
+    end
     local cwd = pane_info.current_working_dir.file_path
     local proc = pane_info.foreground_process_name or ''
     return cwd and replace_home_with_tilde(cwd) .. ' — ' .. basename(proc) or basename(proc)
@@ -74,7 +75,31 @@ local function scheme_for_appearance(appearance)
     end
 end
 
+local function get_appearance()
+    if wezterm.gui then
+        return wezterm.gui.get_appearance()
+    end
+    return 'Dark'
+end
+
+config.color_schemes = {}
+
+for _, name in pairs({'Builtin Solarized Light', 'Builtin Solarized Dark'}) do
+    local scheme = wezterm.get_builtin_color_schemes()[name]
+    scheme.copy_mode_active_highlight_bg = { AnsiColor = 'Yellow' }
+    scheme.copy_mode_active_highlight_fg = { AnsiColor = 'White' }
+    scheme.copy_mode_inactive_highlight_bg = { AnsiColor = 'Yellow' }
+    scheme.copy_mode_inactive_highlight_fg = { AnsiColor = 'Black' }
+    scheme.quick_select_label_bg = { AnsiColor = 'Yellow' }
+    scheme.quick_select_label_fg = { AnsiColor = 'Black' }
+    scheme.quick_select_match_bg = { AnsiColor = 'Yellow' }
+    scheme.quick_select_match_fg = { AnsiColor = 'Black' }
+    config.color_schemes[name] = scheme
+end
+
 config.color_scheme = scheme_for_appearance(get_appearance())
+
+wezterm.log_info("bar")
 
 -- Disable ligatures
 config.harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' }
@@ -106,7 +131,7 @@ config.keys = {
         action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain' },
     },
     {
-        key = 'D',
+        key = 'd',
         mods = 'SUPER|SHIFT',
         action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain' },
     },
@@ -131,15 +156,17 @@ config.keys = {
         action = wezterm.action.ClearScrollback 'ScrollbackAndViewport',
     },
     {
-        key = 'W',
+        key = 'w',
         mods = 'SUPER|SHIFT',
         action = wezterm.action.CloseCurrentTab { confirm = false },
     },
-    -- {
-    --     key = 'd',
-    --     mods = 'SUPER|SHIFT|ALT|CTRL',
-    --     action = wezterm.action.ActivateCommandPalette,
-    -- },
+    {
+        key = 'f',
+        mods = 'SUPER',
+        action = wezterm.action.Search {
+            Regex = '',
+        },
+    },
 }
 
 return config
