@@ -2,13 +2,8 @@
 
 # Ask for the administrator password upfront
 sudo -v
-
 # Keep-alive: update existing `sudo` time stamp until `.macos` has finished
-while true; do
-	sudo -n true
-	sleep 60
-	kill -0 "$$" || exit
-done 2>/dev/null &
+while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 CONTAINER=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
 
@@ -944,7 +939,7 @@ installations() {
 		eval "$(/opt/homebrew/bin/brew shellenv)"
 	fi
 
-	xcodes install --latest
+	xcodes install --latest --select
 
 	brew_install aria2
 	brew_install atuin
@@ -964,6 +959,7 @@ installations() {
 	brew_install neovim
 	brew_install node
 	brew_install periphery
+	brew_install qpdf
 	brew_install ripgrep
 	brew_install shellcheck
 	brew_install wp-cli

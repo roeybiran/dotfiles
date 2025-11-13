@@ -7,15 +7,11 @@ maintain() {
 
 	echo "Updating package managers..."
 
-	# mas
-	echo ">> updating mas apps"
-	mas upgrade
-
 	# npm
-	echo ">> updating npm"
-	npm install -g npm@latest
-	echo ">> updating global npm packages"
-	npm update -g
+	# echo ">> updating npm"
+	# npm install -g npm@latest
+	# echo ">> updating global npm packages"
+	# npm update -g
 
 	# brew
 	# update brew itself and all formulae
@@ -30,6 +26,10 @@ maintain() {
 	brew autoremove
 	echo ">> brew doctor"
 	brew doctor
+
+	# mas
+	echo ">> updating mas apps"
+	mas upgrade
 
 	backup_repos_from_github --dir="$HOME/Library/Mobile Documents/com~apple~CloudDocs/stuff/projects/_code"
 	backup_dotfiles
