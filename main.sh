@@ -9,8 +9,9 @@ CONTAINER=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
 
 source "$CONTAINER/private/secrets.sh"
 
-# constants
-my_login_items=(
+# BEGIN CONSTANTS
+
+LOGIN_ITEMS=(
 	/Applications/Finbar.app
 	/Applications/Homerow.app
 	/Applications/Knobby.app
@@ -21,8 +22,82 @@ my_login_items=(
 	/Applications/WezTerm.app
 )
 
+BREW_PACKAGES=(
+	aria2
+	atuin
+	bat
+	eza
+	fd
+	ffmpeg
+	font-symbols-only-nerd-font
+	fzf
+	gh
+	git-extras
+	git-lfs
+	icdiff
+	jq
+	lazygit
+	mas
+	neovim
+	node
+	periphery
+	qpdf
+	ripgrep
+	shellcheck
+	spaceship
+	wp-cli
+	xcodes
+	zoxide
+	zsh-autosuggestions
+	graphicsmagick
+	imagemagick
+)
+
+BREW_CASK_PACKAGES=(
+	appcleaner
+	chatgpt
+	cursor
+	dash
+	dropbox
+	figma
+	finbar
+	font-input
+	google-chrome
+	hammerspoon
+	homerow
+	karabiner-elements
+	launchbar
+	little-snitch
+	local
+	raycast
+	sf-symbols
+	shottr
+	slack
+	spotify
+	the-unarchiver
+	transmit
+	visual-studio-code
+	wezterm@nightly
+)
+
+declare -A MAS_APPS=(
+	["Developer"]=640199958
+	["Hush"]=1544743900
+	["Keynote"]=409183694
+	["Numbers"]=409203825
+	["Pages"]=409201541
+	["Vimlike"]=1584519802
+	["Select Like A Boss For Safari"]=1437310115
+	["Shareful"]=1522267256
+	["Velja"]=1607635845
+	["WhatsApp"]=310633997
+	["Wipr"]=1320666476
+)
+
+# END CONSTANTS
+
 add_login_items() {
-	for app in "${my_login_items[@]}"; do
+	for app in "${LOGIN_ITEMS[@]}"; do
 		if [[ -e "$app" ]]; then
 			osascript -e "tell app \"System Events\" to make new login item with properties {hidden:true, path:\"$app\"}" &>/dev/null
 		fi
@@ -104,7 +179,6 @@ install_app_from_github_releases() {
 	echo "Mounting..."
 	dmg="$(find "$(pwd)" -name "*.dmg")"
 	volume="$(hdiutil attach "$dmg" -nobrowse | tail -n 1 | grep -E -o "/Volumes/.+$")"
-
 	echo "Copying to /Applications..."
 	cp -Rf "$(find "${volume}" -maxdepth 1 -name "*.app")" /Applications/
 
@@ -939,39 +1013,15 @@ installations() {
 		eval "$(/opt/homebrew/bin/brew shellenv)"
 	fi
 
-	xcodes install --latest --select
+	if ! command -v xcodebuild &>/dev/null; then
+		xcodes install --latest --select
+	fi
 
-	brew_install aria2
-	brew_install atuin
-	brew_install bat
-	brew_install eza
-	brew_install fd
-	brew_install ffmpeg
-	brew_install font-symbols-only-nerd-font
-	brew_install fzf
-	brew_install gh
-	brew_install git-extras
-	brew_install git-lfs
-	brew_install icdiff
-	brew_install jq
-	brew_install lazygit
-	brew_install mas
-	brew_install neovim
-	brew_install node
-	brew_install periphery
-	brew_install qpdf
-	brew_install ripgrep
-	brew_install shellcheck
-	brew_install wp-cli
-	brew_install xcodes
-	brew_install zoxide
-	brew_install zsh-autosuggestions
+	for package in "${BREW_PACKAGES[@]}"; do
+		brew_install "$package"
+	done
 
 	# for create-dmg
-	brew_install graphicsmagick
-	brew_install imagemagick
-
-	brew_install spaceship
 	if [ ! -d "$HOME/.zsh/spaceship-vi-mode" ]; then
 		mkdir -p "$HOME/.zsh"
 		git clone --depth=1 https://github.com/spaceship-prompt/spaceship-vi-mode.git "$HOME/.zsh/spaceship-vi-mode"
@@ -980,42 +1030,13 @@ installations() {
 	npm install -g create-dmg
 	npm install -g np
 
-	brew_cask_install appcleaner
-	brew_cask_install chatgpt
-	brew_cask_install cursor
-	brew_cask_install dash
-	brew_cask_install dropbox
-	brew_cask_install figma
-	brew_cask_install finbar
-	brew_cask_install font-input
-	brew_cask_install google-chrome
-	brew_cask_install hammerspoon
-	brew_cask_install homerow
-	brew_cask_install karabiner-elements
-	brew_cask_install launchbar
-	brew_cask_install little-snitch
-	brew_cask_install local
-	brew_cask_install raycast
-	brew_cask_install sf-symbols
-	brew_cask_install shottr
-	brew_cask_install slack
-	brew_cask_install spotify
-	brew_cask_install the-unarchiver
-	brew_cask_install transmit
-	brew_cask_install visual-studio-code
-	brew_cask_install wezterm@nightly
+	for package in "${BREW_CASK_PACKAGES[@]}"; do
+		brew_cask_install "$package"
+	done
 
-	mas_install "Developer" 640199958
-	mas_install "Hush" 1544743900
-	mas_install "Keynote" 409183694
-	mas_install "Numbers" 409203825
-	mas_install "Pages" 409201541
-	mas_install "Vimlike" 1584519802
-	mas_install "Select Like A Boss For Safari" 1437310115
-	mas_install "Shareful" 1522267256
-	mas_install "Velja" 1607635845
-	mas_install "WhatsApp" 310633997
-	mas_install "Wipr" 1320666476
+	for app in "${!MAS_APPS[@]}"; do
+		mas_install "$app" "${MAS_APPS[$app]}"
+	done
 }
 
 symlinks() {
@@ -1043,16 +1064,13 @@ symlinks() {
 
 	# zoxide
 	link "$CONTAINER/private/zoxide" "$HOME/Library/Application Support/zoxide"
-
-	# misc
-	# link "$CONTAINER/.cursor/commands" "$HOME/.cursor/commands"
 }
 
 
 if [[ "$1" == "link" ]]; then
 	symlinks
 elif [[ $# -eq 0 ]]; then
-	link
+	symlinks
 	config
 	install
 fi
