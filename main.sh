@@ -49,12 +49,12 @@ BREW_PACKAGES=(
 	xcodes
 	zoxide
 	zsh-autosuggestions
+	# for create-dmg
 	graphicsmagick
 	imagemagick
 )
 
 BREW_CASK_PACKAGES=(
-	appcleaner
 	chatgpt
 	cursor
 	dash
@@ -1021,7 +1021,6 @@ installations() {
 		brew_install "$package"
 	done
 
-	# for create-dmg
 	if [ ! -d "$HOME/.zsh/spaceship-vi-mode" ]; then
 		mkdir -p "$HOME/.zsh"
 		git clone --depth=1 https://github.com/spaceship-prompt/spaceship-vi-mode.git "$HOME/.zsh/spaceship-vi-mode"

@@ -21,23 +21,24 @@ alias lg=lazygit
 alias cat=bat
 alias ls="eza -la --icons"
 
-alias gl="git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+alias amend="gca -n --no-edit --amend"
+alias ga="git add"
+alias gc="git commit"
 alias gca="git add . && git commit -a"
 alias gcam="gca -m"
-alias gc="git commit"
+alias gcf="git add . && git fixup"
+alias gdf="git diff"
+alias gl="git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 alias gpl="git pull"
+alias gpr="git pull --rebase"
 alias gpu="git push"
+alias gr="git restore"
 alias gs="git status"
+alias gsh="git show"
 alias gsl="git stash list"
 alias gsp="git stash pop"
 alias gst="git stash"
-alias gdf="git diff"
-alias ga="git add"
 alias gtl="git tag -l"
-alias gpr="git pull --rebase"
-alias gcf="git add . && git fixup"
-alias gsh="git show"
-alias amend="gca -n --no-edit --amend"
 
 alias update="brew update; brew upgrade; mas upgrade"
 
@@ -46,5 +47,5 @@ alias cx="codex --dangerously-bypass-approvals-and-sandbox"
 alias ca="cursor-agent -f"
 
 function gcampu() {
-    gca -m "$1" && git push
+  gca -m "$1" && git push
 }
