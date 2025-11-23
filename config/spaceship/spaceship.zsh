@@ -12,17 +12,17 @@ eval spaceship_vi_mode_enable
 SPACESHIP_VI_MODE_COLOR=red
 
 SPACESHIP_PROMPT_ORDER=(
-time
-user
-dir
-host
-git
-exec_time
-async
-line_sep
-jobs
-exit_code
-sudo
-char
-vi_mode
+	time
+	user
+	dir
+	host
+	git
+	exec_time
+	async
+	line_sep
+	jobs
+	exit_code
+	sudo
+	char
+	vi_mode
 )

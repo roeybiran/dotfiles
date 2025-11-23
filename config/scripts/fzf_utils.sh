@@ -68,7 +68,7 @@ git_fuzzy_stash() {
 # https://sancho.dev/blog/better-yarn-npm-run
 fzf_npm_run() {
 	local scripts
-	if [[ -f  package.json ]]; then
+	if [[ -f package.json ]]; then
 		scripts=$(jq .scripts package.json | sed '1d;$d' | fzf --height 40%)
 		if [[ -n $scripts ]]; then
 			script_name=$(echo "$scripts" | awk -F ': ' '{gsub(/"/, "", $1); print $1}')

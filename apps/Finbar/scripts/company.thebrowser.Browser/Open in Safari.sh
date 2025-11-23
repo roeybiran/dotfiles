@@ -12,4 +12,4 @@ url="$(
 	EOF
 )"
 
-open -b com.apple.Safari "$url";
+open -b com.apple.Safari "$url"

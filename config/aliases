@@ -47,5 +47,5 @@ alias cx="codex --dangerously-bypass-approvals-and-sandbox"
 alias ca="cursor-agent -f"
 
 function gcampu() {
-  gca -m "$1" && git push
+	gca -m "$1" && git push
 }

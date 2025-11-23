@@ -42,27 +42,26 @@ base3=#fdf6e3
 # light > background
 
 function colorscheme() {
-  local mode="$1"
+	local mode="$1"
 
-  # tmux
-  # ====
-  /opt/homebrew/bin/tmux source-file ~/.tmux.conf
+	# tmux
+	# ====
+	/opt/homebrew/bin/tmux source-file ~/.tmux.conf
 
-  # Alacritty
-  # =========
-  if [[ "$mode" == "dark" ]]; then
-    background=$base03
-    foreground=$base0
-  else
-    background=$base3
-    foreground=$base00
-  fi
-  sed -i "" "s/^background = .*/background = '$background'/" "$(realpath "$HOME"/.config/alacritty/alacritty.toml)"
-  sed -i "" "s/^foreground = .*/foreground = '$foreground'/" "$(realpath "$HOME"/.config/alacritty/alacritty.toml)"
+	# Alacritty
+	# =========
+	if [[ "$mode" == "dark" ]]; then
+		background=$base03
+		foreground=$base0
+	else
+		background=$base3
+		foreground=$base00
+	fi
+	sed -i "" "s/^background = .*/background = '$background'/" "$(realpath "$HOME"/.config/alacritty/alacritty.toml)"
+	sed -i "" "s/^foreground = .*/foreground = '$foreground'/" "$(realpath "$HOME"/.config/alacritty/alacritty.toml)"
 }
 
 # this is meant to be called from another process (e.g. Hammerspoon) on macOS theme change
-if [[ "$1" == "--run" ]];
-then
-  colorscheme "$2"
+if [[ "$1" == "--run" ]]; then
+	colorscheme "$2"
 fi
