@@ -100,6 +100,55 @@ declare -A MAS_APPS=(
 
 # END CONSTANTS
 
+link() {
+	local src="$1"
+	local dst="$2"
+
+	local parent
+	parent="$(dirname "$dst")"
+	if [[ ! -d "$parent" ]]; then
+		mkdir -p "$parent" &>/dev/null
+	fi
+
+	if [[ -e "$dst" ]]; then
+		mv -f "$dst" ~/.Trash &>/dev/null
+	fi
+
+	if [[ ! -e "$src" ]]; then
+		echo "Error: source '$src' does not exist"
+		return 1
+	fi
+
+	ln -sFn "$src" "$dst"
+}
+
+symlinks() {
+	# dotfiles
+	link "$CONTAINER/.gitconfig" "$HOME/.gitconfig"
+	link "$CONTAINER/.gitignore" "$HOME/.gitignore"
+	link "$CONTAINER/.zshrc" "$HOME/.zshrc"
+
+	# ssh
+	link "$CONTAINER/.ssh/config" "$HOME/.ssh/config"
+
+	# "XDG" config
+	mv -f "$HOME/.config" ~/.Trash &>/dev/null
+	for f in "$CONTAINER/config"/*; do
+		link "$f" ~/.config/"$(basename "$f")"
+	done
+
+	# apps
+	link "$CONTAINER/apps/LaunchBar" "$HOME/Library/Application Support/LaunchBar"
+	link "$CONTAINER/apps/Xcode/IDETemplateMacros.plist" "$HOME/Library/Developer/Xcode/UserData/IDETemplateMacros.plist"
+	link "$CONTAINER/apps/Xcode/CodeSnippets" "$HOME/Library/Developer/Xcode/UserData/CodeSnippets"
+	link "$CONTAINER/apps/Xcode/FontAndColorThemes" "$HOME/Library/Developer/Xcode/UserData/FontAndColorThemes"
+	link "$CONTAINER/apps/Finbar/scripts" "$HOME/Library/Application Scripts/com.roeybiran.Finbar"
+	link "$CONTAINER/apps/Finbar/recents.json" "$HOME/Library/Application Support/com.roeybiran.Finbar/recents.json"
+
+	# zoxide
+	link "$CONTAINER/private/zoxide" "$HOME/Library/Application Support/zoxide"
+}
+
 add_login_items() {
 	for app in "${LOGIN_ITEMS[@]}"; do
 		if [[ -e "$app" ]]; then
@@ -208,28 +257,6 @@ yn() {
 
 trash() {
 	osascript -e "tell app \"Finder\" to move POSIX file \"$1\" to trash" &>/dev/null
-}
-
-link() {
-	local src="$1"
-	local dst="$2"
-
-	local parent
-	parent="$(dirname "$dst")"
-	if [[ ! -d "$parent" ]]; then
-		mkdir -p "$parent" &>/dev/null
-	fi
-
-	if [[ -e "$dst" ]]; then
-		mv -f "$dst" ~/.Trash &>/dev/null
-	fi
-
-	if [[ ! -e "$src" ]]; then
-		echo "Error: source '$src' does not exist"
-		return 1
-	fi
-
-	ln -sFn "$src" "$dst"
 }
 
 mas_install() {
@@ -771,18 +798,11 @@ config() {
 	defaults write com.roeybiran.Finbar license -string "$FINBAR_LICENSE"
 	defaults write com.roeybiran.Finbar preferredScreen -string withKeyboardFocus
 	defaults write com.roeybiran.Finbar browsingMode -int 1
-	defaults write com.roeybiran.Finbar menuBarPredicate -array \
-		'{ "description" = "Apple Menu"; "id" = "F7ED726A-0D31-4E92-91AA-9F884EA7D280"; "predicate" = "title == \"Apple\""; }' \
-		'{ "description" = "Brave Browser - History"; "id" = "54D06217-282F-4AD4-BE3A-5FE710C3D9EF"; "predicate" = "bundleIdentifier == \"com.brave.Browser\" AND path BEGINSWITH \"History\" AND index > 3 AND title != \"Show Full History\" AND depth == 1"; }' \
-		'{ "description" = "Safari - Bookmarks"; "id" = "B61785D9-9F63-46B3-ADDA-02A72FD218F3"; "predicate" = "bundleIdentifier == \"com.apple.Safari\" AND (path BEGINSWITH \"Bookmarks\" AND title != \"Bookmarks\" AND index >= 14)"; }' \
-		'{ "description" = "Safari - History"; "id" = "F800D6E4-93BE-489E-9663-734320C5D57D"; "predicate" = "bundleIdentifier == \"com.apple.Safari\" AND (path BEGINSWITH \"History\" AND title != \"Clear History\U2026\" AND (title == \"Recently Closed\" OR index >= 11))"; }'
+	defaults write com.roeybiran.Finbar menuBarRules -data '<5B7B22707265646963617465223A227469746C65203D3D205C224170706C655C22222C226964223A2244363343303031312D363445372D343535432D413646422D383635453346333741413237222C226465736372697074696F6E223A224170706C65204D656E75227D2C7B226964223A2232423133303035352D393133422D343841382D423743412D413832323243364136314336222C226465736372697074696F6E223A2253616661726920486973746F7279222C22707265646963617465223A2262756E646C654964656E746966696572203D3D205C22636F6D2E6170706C652E5361666172695C2220414E4420287469746C65203D3D205C22486973746F72795C22204F52207469746C65203D3D205C22426F6F6B6D61726B735C2229227D5D>'
 
 	################################
 	# Syphon
 	################################
-	# defaults write com.roeybiran.Syphon didSetDefaultShortcuts -bool true
-	# defaults write com.roeybiran.Syphon RBShortcutKit_Shortcuts -dict-add selectNextWindow '{ keyCode = 50; modifiers = 256; }'
-	# defaults write com.roeybiran.Syphon RBShortcutKit_Shortcuts -dict-add selectPreviousWindow '{ keyCode = 50; modifiers = 768; }'
 	defaults write com.roeybiran.Syphon RBInputSourceKit_preferredInputSourceID -string "com.apple.keylayout.ABC"
 	defaults write com.roeybiran.Syphon RBSettingsKit_IsWindowFloating -bool true
 	defaults write com.roeybiran.Syphon SUAutomaticallyUpdate -bool true
@@ -794,6 +814,8 @@ config() {
 	defaults write com.roeybiran.Syphon minimizedWindowsSortLast -bool true
 	defaults write com.roeybiran.Syphon showAtLeastOneWindow -bool true
 	defaults write com.roeybiran.Syphon license -string "$SYPHON_LICENSE"
+	defaults write com.roeybiran.Syphon aliases -data '<5B7B22616C696173223A2277222C226964223A2234434434363732372D433930382D344133412D424433322D444639303045303341433437222C2262756E646C654944223A226E65742E77686174736170702E5768617473417070227D2C7B22616C696173223A2263222C226964223A2242444243423246352D304438302D344237352D394146342D464233303531353430414234222C2262756E646C654944223A22636F6D2E6170706C652E6943616C227D2C7B22616C696173223A2274222C226964223A2246373336423542452D373031422D343336362D414141322D353142434334363136343842222C2262756E646C654944223A22636F6D2E6769746875622E77657A2E77657A7465726D227D2C7B22616C696173223A227077222C226964223A2238333846334245392D353330432D344644462D413536432D383834454335334143414245222C2262756E646C654944223A226F72672E6368726F6D69756D2E4368726F6D69756D227D5D>'
+	defaults write com.roeybiran.Syphon rules -data '<5B7B226964223A2246313039313034412D344544352D344242322D414230432D353537414546453534464338222C2262756E646C654944223A22636F6D2E6170706C652E6943616C222C226B696E64223A307D2C7B226964223A2230343934433543352D433341432D344634362D414333452D414633363831373139313436222C2262756E646C654944223A22636F6D2E6F70656E61692E63686174222C226B696E64223A307D2C7B226964223A2233433033434346322D453932432D344433362D394245422D333631334635324630453632222C2262756E646C654944223A22636F6D2E6B6170656C692E64617368646F63222C226B696E64223A307D2C7B226964223A2242314644313943342D454435462D343646362D393434392D424244334430304542354536222C2262756E646C654944223A22636F6D2E6170706C652E66696E646572222C226B696E64223A317D2C7B2262756E646C654944223A22636F6D2E676574666C79776865656C2E6C696768746E696E672E6C6F63616C222C226B696E64223A302C226964223A2230313734384245442D413933462D343031372D424533352D374130313138393732424631227D2C7B2262756E646C654944223A22636F6D2E6170706C652E6D61696C222C226B696E64223A302C226964223A2239414530354532312D373037332D343535312D383136362D414642433342443537333532227D2C7B2262756E646C654944223A22636F6D2E6170706C652E4E6F746573222C226B696E64223A302C226964223A2232453131314633302D374334442D344637382D423343352D414545384441453035354237227D2C7B2262756E646C654944223A226E65742E77686174736170702E5768617473417070222C226B696E64223A302C226964223A2235304443343945382D444633432D343037382D424430362D313135333246453436324346227D5D>'
 
 	################################
 	# Knobby
@@ -1040,33 +1062,6 @@ installations() {
 	for app in "${!MAS_APPS[@]}"; do
 		mas_install "$app" "${MAS_APPS[$app]}"
 	done
-}
-
-symlinks() {
-	# dotfiles
-	link "$CONTAINER/.gitconfig" "$HOME/.gitconfig"
-	link "$CONTAINER/.gitignore" "$HOME/.gitignore"
-	link "$CONTAINER/.zshrc" "$HOME/.zshrc"
-
-	# ssh
-	link "$CONTAINER/.ssh/config" "$HOME/.ssh/config"
-
-	# "XDG" config
-	mv -f "$HOME/.config" ~/.Trash &>/dev/null
-	for f in "$CONTAINER/config"/*; do
-		link "$f" ~/.config/"$(basename "$f")"
-	done
-
-	# apps
-	link "$CONTAINER/apps/LaunchBar" "$HOME/Library/Application Support/LaunchBar"
-	link "$CONTAINER/apps/Xcode/IDETemplateMacros.plist" "$HOME/Library/Developer/Xcode/UserData/IDETemplateMacros.plist"
-	link "$CONTAINER/apps/Xcode/CodeSnippets" "$HOME/Library/Developer/Xcode/UserData/CodeSnippets"
-	link "$CONTAINER/apps/Xcode/FontAndColorThemes" "$HOME/Library/Developer/Xcode/UserData/FontAndColorThemes"
-	link "$CONTAINER/apps/Finbar/scripts" "$HOME/Library/Application Scripts/com.roeybiran.Finbar"
-	link "$CONTAINER/apps/Finbar/recents.json" "$HOME/Library/Application Support/com.roeybiran.Finbar/recents.json"
-
-	# zoxide
-	link "$CONTAINER/private/zoxide" "$HOME/Library/Application Support/zoxide"
 }
 
 if [[ "$1" == "link" ]]; then

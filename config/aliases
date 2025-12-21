@@ -24,7 +24,6 @@ alias ls="eza -la --icons"
 alias amend="gca -n --no-edit --amend"
 alias ga="git add"
 alias gc="git commit"
-alias gca="git add . && git commit -a"
 alias gcam="gca -m"
 alias gcf="git add . && git fixup"
 alias gdf="git diff"
@@ -45,6 +44,16 @@ alias update="brew update; brew upgrade; mas upgrade"
 alias cc="claude --dangerously-skip-permissions"
 alias cx="codex --dangerously-bypass-approvals-and-sandbox"
 alias ca="cursor-agent -f"
+
+function gca() {
+	# Check if running from repo root
+	if [[ ! -d ".git" ]]; then
+		echo "Error: This script must be run from the repository root" >&2
+		return 1
+	fi
+	
+	git add . && git commit -a "$@"
+}
 
 function gcampu() {
 	gca -m "$1" && git push

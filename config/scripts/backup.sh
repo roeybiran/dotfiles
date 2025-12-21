@@ -1,5 +1,7 @@
 #!/bin/bash
 
+BACKUP_DIR="$HOME/Library/Mobile Documents/com~apple~CloudDocs/backups"
+
 backup_repos_from_github() {
 	# Suppress job completion messages
 	set +m
@@ -80,4 +82,17 @@ backup_repos_from_github() {
 
 	echo ""
 	echo "Repository sync completed!"
+}
+
+# _backup() {
+# 	rsync -avz --delete "$HOME/.cursor/commands/" "$BACKUP_DIR/cursor_commands"
+# }
+
+backup_dotfiles() {
+	rsync -avz --delete "$HOME/.dotfiles" "$BACKUP_DIR"
+}
+
+backup() {
+	backup_dotfiles
+	backup_repos_from_github --dir="$BACKUP_DIR/code"
 }

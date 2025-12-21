@@ -496,7 +496,7 @@
                         "manipulators": [
                             {
                                 "from": {
-                                    "key_code": "t",
+                                    "key_code": "f12",
                                     "modifiers": { "mandatory": ["command", "control", "option", "shift"] }
                                 },
                                 "to": [{ "shell_command": "/opt/homebrew/bin/hs -c \"spoon.GlobalAutomations.openTerminal()\"" }],

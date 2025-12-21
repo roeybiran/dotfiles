@@ -1,9 +1,13 @@
 theme = dark:"Builtin Solarized Dark",light:"Builtin Solarized Light"
 
-unfocused-split-fill = "black"
+unfocused-split-fill = black
+macos-hidden = always
+background-opacity = 0.9
+quick-terminal-size = 50%
 
 # key bindings
 
+keybind = global:ctrl+super+alt+shift+t=toggle_quick_terminal
 keybind = ctrl+b>shift+\=new_split:right
 keybind = ctrl+b>-=new_split:down
 keybind = ctrl+b>x=close_surface

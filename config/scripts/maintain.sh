@@ -31,6 +31,5 @@ maintain() {
 	echo ">> updating mas apps"
 	mas upgrade
 
-	backup_repos_from_github --dir="$HOME/Library/Mobile Documents/com~apple~CloudDocs/stuff/projects/_code"
-	backup_dotfiles
+	backup
 }
