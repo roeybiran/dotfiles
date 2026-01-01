@@ -84,9 +84,9 @@ backup_repos_from_github() {
 	echo "Repository sync completed!"
 }
 
-# _backup() {
-# 	rsync -avz --delete "$HOME/.cursor/commands/" "$BACKUP_DIR/cursor_commands"
-# }
+_backup() {
+	rsync -avz --delete "$HOME/.cursor/commands/" "$BACKUP_DIR/cursor_commands"
+}
 
 backup_dotfiles() {
 	rsync -avz --delete "$HOME/.dotfiles" "$BACKUP_DIR"

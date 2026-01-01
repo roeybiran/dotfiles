@@ -1,7 +1,7 @@
 theme = dark:"Builtin Solarized Dark",light:"Builtin Solarized Light"
 
 unfocused-split-fill = black
-macos-hidden = always
+# macos-hidden = always
 background-opacity = 0.9
 quick-terminal-size = 50%
 

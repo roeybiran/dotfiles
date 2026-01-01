@@ -8,6 +8,8 @@ export WORDCHARS='*?[]~=&;!#$%^(){}<>' # https://stackoverflow.com/questions/444
 export HOMEBREW_NO_ANALYTICS=1
 export HOMEBREW_NO_AUTO_UPDATE=1
 
+export XDG_CONFIG_HOME="$HOME/.config"
+
 setopt complete_aliases
 set -o vi
 
