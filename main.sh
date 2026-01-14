@@ -66,6 +66,7 @@ BREW_CASK_PACKAGES=(
 	figma
 	finbar
 	font-input
+	ghostty
 	google-chrome
 	hammerspoon
 	homerow
@@ -73,6 +74,7 @@ BREW_CASK_PACKAGES=(
 	launchbar
 	little-snitch
 	local
+	macsymbolicator
 	raycast
 	sf-symbols
 	shottr
@@ -82,7 +84,6 @@ BREW_CASK_PACKAGES=(
 	transmit
 	visual-studio-code
 	wezterm@nightly
-	ghostty
 )
 
 declare -A MAS_APPS=(
