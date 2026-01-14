@@ -1,6 +1,7 @@
 #!/bin/bash
 
 BACKUP_DIR="$HOME/Library/Mobile Documents/com~apple~CloudDocs/backups"
+REPOS_BACKUP_DIR="$BACKUP_DIR/repos"
 
 backup_repos_from_github() {
 	# Suppress job completion messages
@@ -94,5 +95,5 @@ backup_dotfiles() {
 
 backup() {
 	backup_dotfiles
-	backup_repos_from_github --dir="$BACKUP_DIR/code"
+	backup_repos_from_github --dir="$REPOS_BACKUP_DIR"
 }
