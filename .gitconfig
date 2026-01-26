@@ -32,7 +32,7 @@
         enabled = true
         autoupdate = true
 [core]
-	excludesfile = /Users/roey.biran/.gitignore
+	excludesfile = ~/.gitignore
 [rebase]
         autoSquash = true
         autoStash = true

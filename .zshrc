@@ -123,3 +123,6 @@ elif type compctl &>/dev/null; then
   compctl -K _npm_completion npm
 fi
 ###-end-npm-completion-###
+
+# Added by Antigravity
+export PATH="/Users/roey/.antigravity/antigravity/bin:$PATH"

@@ -1,8 +1,9 @@
 theme = dark:"Builtin Solarized Dark",light:"Builtin Solarized Light"
 
 unfocused-split-fill = black
+bell-features = no-system, no-audio, no-attention, no-title, no-border
 # macos-hidden = always
-background-opacity = 0.9
+# background-opacity = 0.9
 quick-terminal-size = 50%
 
 # key bindings
