@@ -1,0 +1,31 @@
+{
+  "includeCoAuthoredBy": false,
+  "spinnerTipsEnabled": false,
+  "permissions": {
+    "allow": [
+      "Bash(bash:*)",
+      "Read"
+    ],
+    "defaultMode": "acceptEdits"
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "input=$(cat); full_dir=$(echo \"$input\" | jq -r '.workspace.current_dir'); dir=$(basename \"$full_dir\"); model=$(echo \"$input\" | jq -r '.model.display_name'); remaining=$(echo \"$input\" | jq -r '.context_window.remaining_percentage // empty'); git_info=''; if cd \"$full_dir\" 2>/dev/null && git rev-parse --git-dir > /dev/null 2>&1; then branch=$(git -c core.fileMode=false branch --show-current 2>/dev/null || echo 'detached'); status=$(git -c core.fileMode=false status --porcelain 2>/dev/null); if [ -n \"$status\" ]; then modified=$(echo \"$status\" | grep -c '^ M' || true); added=$(echo \"$status\" | grep -c '^A' || true); deleted=$(echo \"$status\" | grep -c '^D' || true); untracked=$(echo \"$status\" | grep -c '^??' || true); status_symbols=''; [ \"$modified\" -gt 0 ] && status_symbols=\"${status_symbols}M:${modified} \"; [ \"$added\" -gt 0 ] && status_symbols=\"${status_symbols}A:${added} \"; [ \"$deleted\" -gt 0 ] && status_symbols=\"${status_symbols}D:${deleted} \"; [ \"$untracked\" -gt 0 ] && status_symbols=\"${status_symbols}?:${untracked} \"; git_info=\" [git:${branch} ${status_symbols% }]\"; else git_info=\" [git:${branch}]\"; fi; fi; context_info=''; [ -n \"$remaining\" ] && context_info=\" | Context: ${remaining}% remaining\"; printf \"%s%s | %s%s\" \"$dir\" \"$git_info\" \"$model\" \"$context_info\""
+  },
+  "enabledPlugins": {
+    "swift-lsp@claude-plugins-official": true
+  },
+  "hooks": {
+    "Notification": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "osascript -e 'display notification \"Claude Code needs your attention\" with title \"Claude Code\"'"
+          }
+        ]
+      }
+    ]
+  }
+}

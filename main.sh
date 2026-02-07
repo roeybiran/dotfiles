@@ -88,7 +88,6 @@ Keynote	409183694
 Numbers	409203825
 Pages	409201541
 Vimlike	1584519802
-Select Like A Boss For Safari	1437310115
 Shareful	1522267256
 Velja	1607635845
 WhatsApp	310633997
@@ -144,8 +143,9 @@ symlinks() {
 	# zoxide
 	link "$CONTAINER/private/zoxide" "$HOME/Library/Application Support/zoxide"
 
+	# claude code
 	link "$CONTAINER/.claude/skills" "$HOME/.claude/skills"
-	link "$CONTAINER/.claude/commands" "$HOME/.claude/commands"
+	link "$CONTAINER/.claude/settings.json" "$HOME/.claude/settings.json"
 }
 
 add_login_items() {
@@ -1055,7 +1055,7 @@ installations() {
 
 	xcodes install --latest --select
 
-	if command -v xcode-select && ! xcode-select -p | grep -q CommandLineTools  &>/dev/null; then
+	if command -v xcode-select &>/dev/null && ! xcode-select -p | grep -q CommandLineTools &>/dev/null; then
 		sudo xcodebuild -license accept
 		sudo /usr/sbin/DevToolsSecurity --enable 1>/dev/null 2>&1
 	fi
