@@ -11,17 +11,15 @@ description: Build and test Xcode projects.
 
 Builds the project, WITHOUT test targets.
 
-- Run `scripts/xcodebuild.sh build --scheme=SCHEME_NAME`.
-- If told to build with warnings, provide the `--with-warnings` argument.
-- Fix any build issues, unless told otherwise.
+- Run `./scripts/xcodebuild.sh build --scheme=SCHEME_NAME`.
+- Fix any errors, don't address warnings unless told otherwise.
 
 ## Build for Testing
 
 Builds the project, WITH test targets.
 
-- Run `scripts/xcodebuild.sh build-tests --scheme=SCHEME_NAME`.
-- If told to build with warnings, provide the `--with-warnings` argument.
-- Fix any build issues, unless told otherwise.
+- Run `./scripts/xcodebuild.sh build-tests --scheme=SCHEME_NAME`.
+- Fix any errors, don't address warnings unless told otherwise.
 
 ## Test
 
@@ -30,10 +28,10 @@ Run tests for the project.
 - If `only` is provided as a parameter to this command:
     - Wrap the specifier in single quotes.
     - Multiple test may be provided.
-    - Run `scripts/xcodebuild.sh run-tests --scheme=SCHEME_NAME --only='TEST_SPECIFIER' [--only="TEST_SPECIFIER2"...]` and fix failing tests.
-    - If the test isn't found, run `scripts/xcodebuild.sh list-tests` and find the correct test identifier. Then, pass the test identifier AS-IS, including backticks and parentheses (this is valid Swift 6.2 syntax). For example: ``MyApp Tests`/`Feature Tests`/`function Tests()``.
+    - Run `./scripts/xcodebuild.sh run-tests --scheme=SCHEME_NAME --only='TEST_SPECIFIER' [--only="TEST_SPECIFIER2"...]` and fix failing tests.
+    - If the test isn't found, run `./scripts/xcodebuild.sh list-tests` and find the correct test identifier. Then, pass the test identifier AS-IS, including backticks and parentheses (this is valid Swift 6.2 syntax). For example: ``MyApp Tests`/`Feature Tests`/`function Tests()``.
     - If the specific test to run hasn't been provided, require it.
-- Otherwise, run `scripts/xcodebuild.sh run-tests --scheme=SCHEME_NAME`
+- Otherwise, run `./scripts/xcodebuild.sh run-tests --scheme=SCHEME_NAME`
 - Fix failing tests.
 - For each run of this command, run the script ONCE. Running the tests takes time.
     - Generate a list of TODOs, where each TODO represents a failing test.

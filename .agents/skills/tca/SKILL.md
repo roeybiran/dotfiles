@@ -13,5 +13,5 @@ Load the skill if a project uses The Composable Architecture (TCA) library.
 
 ## Reference
 
-- See [dependencies.md](docs/dependencies.md) to learn how this library works in tandem with the included [swift-dependencies](https://github.com/pointfreeco/swift-dependencies) library.
-- See [testing.md](docs/testing.md) for testing guidelines.
+- See [dependencies.md](references/dependencies.md) to learn how this library works in tandem with the included [swift-dependencies](https://github.com/pointfreeco/swift-dependencies) library.
+- See [testing.md](references/testing.md) for testing guidelines.

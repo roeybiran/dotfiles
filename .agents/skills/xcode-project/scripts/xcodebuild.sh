@@ -11,21 +11,11 @@ function build() {
     ACTION=build
   fi
 
-  if echo "${@}" | grep --quiet -- --with-warnings; then
-    WARN=true
-  else
-    WARN=false
-  fi
-
   # matches /project/foo.swift:<line>:<col>: error: FOO...
-  output="$(xcodebuild $ACTION -scheme "$SCHEME" -quiet -destination "$DESTINATION" -destination-timeout 0 2>&1)"
-  if echo "$output" | grep -E '[0-9]+: error:'; then
+  output="$(xcodebuild $ACTION -scheme "$SCHEME" -quiet -destination "$DESTINATION" -destination-timeout 0 2>&1 | grep -E '[0-9]+: (error|warning):')"
+  if echo "$output" | grep -q error; then
     echo "BUILD FAILED"
     exit 1
-  fi
-
-  if [[ "$WARN" == true ]]; then
-     echo "$output" | grep 'warning:'
   fi
 
   echo "BUILD SUCCEEDED"
@@ -113,7 +103,6 @@ fi
 SCHEME=""
 TEST_ONLY=()
 COMMAND=""
-WARN=""
 
 for arg in "${@}"; do
     case $arg in
@@ -122,9 +111,6 @@ for arg in "${@}"; do
             ;;
         --only=*)
             TEST_ONLY+=("${arg#*=}")
-            ;;
-        --with-warnings)
-            WARN="$arg"
             ;;
         build|list-tests|build-tests|run-tests)
             COMMAND="$arg"
@@ -143,7 +129,7 @@ case "$COMMAND" in
             echo "Usage: $0 build --scheme=<scheme>"
             exit 1
         fi
-        build "$SCHEME" "$WARN"
+        build "$SCHEME"
         ;;
     "build-tests")
         if [ -z "$SCHEME" ]; then
@@ -167,10 +153,10 @@ case "$COMMAND" in
         list_tests "$SCHEME"
         ;;
     *)
-        echo "Usage: $0 {build|list-tests|build-tests|run-tests} [--scheme=<scheme>] [--only=<test>] [--with-warnings]"
+        echo "Usage: $0 {build|list-tests|build-tests|run-tests} [--scheme=<scheme>] [--only=<test>]"
         echo ""
         echo "Commands:"
-        echo "  build --scheme=<scheme> [--with-warnings] - Build the specified scheme"
+        echo "  build --scheme=<scheme> - Build the specified scheme"
         echo "  list-tests --scheme=<scheme>               - List all tests for the scheme"
         echo "  build-tests --scheme=<scheme>              - Build tests for the scheme"
         echo "  run-tests --scheme=<scheme> [--only=<test>] - Run tests for the scheme (optionally only specific test)"

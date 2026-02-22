@@ -144,7 +144,12 @@ symlinks() {
 	link "$CONTAINER/private/zoxide" "$HOME/Library/Application Support/zoxide"
 
 	# claude code
-	link "$CONTAINER/.claude/skills" "$HOME/.claude/skills"
+	link "$CONTAINER/.agents/skills" "$HOME/.agents/skills"
+	link "$CONTAINER/.agents/AGENTS.md" "$HOME/.agents/AGENTS.md"
+
+	link "$CONTAINER/.agents/skills" "$HOME/.claude/skills"
+	link "$CONTAINER/.agents/AGENTS.md" "$HOME/.claude/CLAUDE.md"
+
 	link "$CONTAINER/.claude/settings.json" "$HOME/.claude/settings.json"
 }
 

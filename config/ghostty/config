@@ -1,12 +1,8 @@
 theme = dark:"Builtin Solarized Dark",light:"Builtin Solarized Light"
 
 unfocused-split-fill = black
-# bell-features = no-system, no-audio, no-attention, no-title, no-border
-# bell-features = no-audio, no-title, no-border
-# macos-hidden = always
-# background-opacity = 0.9
 bell-features = system, no-title, attention, no-border
-shell-integration-features = ssh-terminfo,ssh-env
+shell-integration-features = ssh-terminfo, ssh-env, no-title
 quick-terminal-size = 50%
 
 # key bindings

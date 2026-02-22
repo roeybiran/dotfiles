@@ -4,8 +4,8 @@ description: Usage guide for the [Swift Testing](https://developer.apple.com/doc
 
 ## Reference
 
-- See [implementing-parameterized-tests.md](docs/implementing-parameterized-tests.md) for implementing parameterized tests.
-- See [migrating-a-test-from-xctest.md](docs/migrating-a-test-from-xctest.md) if you're required to migrate a suite from the old XCTest framework.
+- See [implementing-parameterized-tests.md](references/implementing-parameterized-tests.md) for implementing parameterized tests.
+- See [migrating-a-test-from-xctest.md](references/migrating-a-test-from-xctest.md) if you're required to migrate a suite from the old XCTest framework.
 
 ## General Guidelines
 
