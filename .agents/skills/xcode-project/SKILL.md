@@ -2,6 +2,7 @@
 description: Build and test Xcode projects.
 ---
 
+- Use red/green TDD when developing new features or fixing bugs.
 - The following applies only when working in an Xcode project (detected by a presence of `xcodeproj` or `xcworkspace` file in the project's root).
 - Scheme name is this project's name, unless specified otherwise by a parameter to this command.
 - If the prompt revolves around a code change inside a specific scheme, (like a LOCAL package dependency, or target) contained in the project, build and test just the scheme to save build times and keep the focus on the problem your were tasked with. FOR EXAMPLE: if I ask to "fix build errors" in a file called "RunningAppService.swift" that is a part of a local package named "RunningAppService", use `RunningAppService` as the scheme.

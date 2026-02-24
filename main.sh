@@ -93,64 +93,63 @@ Velja	1607635845
 WhatsApp	310633997
 Wipr	1320666476"
 
+SYMLINKS="$CONTAINER/.gitconfig	$HOME/.gitconfig
+$CONTAINER/.gitignore	$HOME/.gitignore
+$CONTAINER/.zshrc	$HOME/.zshrc
+$CONTAINER/.ssh/config	$HOME/.ssh/config
+$CONTAINER/apps/LaunchBar	$HOME/Library/Application Support/LaunchBar
+$CONTAINER/apps/Xcode/IDETemplateMacros.plist	$HOME/Library/Developer/Xcode/UserData/IDETemplateMacros.plist
+$CONTAINER/apps/Xcode/CodeSnippets	$HOME/Library/Developer/Xcode/UserData/CodeSnippets
+$CONTAINER/apps/Xcode/FontAndColorThemes	$HOME/Library/Developer/Xcode/UserData/FontAndColorThemes
+$CONTAINER/apps/Finbar/scripts	$HOME/Library/Application Scripts/com.roeybiran.Finbar
+$CONTAINER/apps/Finbar/recents.json	$HOME/Library/Application Support/com.roeybiran.Finbar/recents.json
+$CONTAINER/private/zoxide	$HOME/Library/Application Support/zoxide
+$CONTAINER/.agents/skills	$HOME/.agents/skills
+$CONTAINER/.agents/AGENTS.md	$HOME/.agents/AGENTS.md
+$CONTAINER/.agents/skills	$HOME/.claude/skills
+$CONTAINER/.agents/AGENTS.md	$HOME/.claude/CLAUDE.md
+$CONTAINER/.claude/settings.json	$HOME/.claude/settings.json"
+
 # END CONSTANTS
 
-link() {
-	local src="$1"
-	local dst="$2"
-
-	local parent
-	parent="$(dirname "$dst")"
-	if [[ ! -d "$parent" ]]; then
-		mkdir -p "$parent" &>/dev/null
-	fi
-
-	if [[ -e "$dst" ]]; then
-		mv -f "$dst" ~/.Trash &>/dev/null
-	fi
-
-	if [[ ! -e "$src" ]]; then
-		echo "Error: source '$src' does not exist"
-		return 1
-	fi
-
-	ln -sFn "$src" "$dst"
-}
-
 symlinks() {
-	# dotfiles
-	link "$CONTAINER/.gitconfig" "$HOME/.gitconfig"
-	link "$CONTAINER/.gitignore" "$HOME/.gitignore"
-	link "$CONTAINER/.zshrc" "$HOME/.zshrc"
+	link() {
+		local src="$1"
+		local dst="$2"
 
-	# ssh
-	link "$CONTAINER/.ssh/config" "$HOME/.ssh/config"
+		local parent
+		parent="$(dirname "$dst")"
+		if [[ ! -d "$parent" ]]; then
+			mkdir -p "$parent" &>/dev/null
+		fi
+
+		if [[ -e "$dst" ]]; then
+			mv -f "$dst" ~/.Trash &>/dev/null
+		fi
+
+		if [[ ! -e "$src" ]]; then
+			echo "Error: source '$src' does not exist"
+			return 1
+		fi
+
+		ln -sFn "$src" "$dst"
+	}
+
+	local src
+	local dst
+
+	while IFS=$'\t' read -r src dst; do
+		if [[ -z "$src" ]]; then
+			continue
+		fi
+		link "$src" "$dst"
+	done <<< "$SYMLINKS"
 
 	# "XDG" config
 	mv -f "$HOME/.config" ~/.Trash &>/dev/null
 	for f in "$CONTAINER/config"/*; do
 		link "$f" ~/.config/"$(basename "$f")"
 	done
-
-	# apps
-	link "$CONTAINER/apps/LaunchBar" "$HOME/Library/Application Support/LaunchBar"
-	link "$CONTAINER/apps/Xcode/IDETemplateMacros.plist" "$HOME/Library/Developer/Xcode/UserData/IDETemplateMacros.plist"
-	link "$CONTAINER/apps/Xcode/CodeSnippets" "$HOME/Library/Developer/Xcode/UserData/CodeSnippets"
-	link "$CONTAINER/apps/Xcode/FontAndColorThemes" "$HOME/Library/Developer/Xcode/UserData/FontAndColorThemes"
-	link "$CONTAINER/apps/Finbar/scripts" "$HOME/Library/Application Scripts/com.roeybiran.Finbar"
-	link "$CONTAINER/apps/Finbar/recents.json" "$HOME/Library/Application Support/com.roeybiran.Finbar/recents.json"
-
-	# zoxide
-	link "$CONTAINER/private/zoxide" "$HOME/Library/Application Support/zoxide"
-
-	# claude code
-	link "$CONTAINER/.agents/skills" "$HOME/.agents/skills"
-	link "$CONTAINER/.agents/AGENTS.md" "$HOME/.agents/AGENTS.md"
-
-	link "$CONTAINER/.agents/skills" "$HOME/.claude/skills"
-	link "$CONTAINER/.agents/AGENTS.md" "$HOME/.claude/CLAUDE.md"
-
-	link "$CONTAINER/.claude/settings.json" "$HOME/.claude/settings.json"
 }
 
 add_login_items() {
