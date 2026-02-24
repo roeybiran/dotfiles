@@ -12,4 +12,4 @@ done
 
 DIR="$(dirname "${SOURCE}")"
 
-osascript "${DIR}/Notes - Writing Direction.scpt" "Left to Right"
+"${DIR}/Writing Direction.sh" "Left to Right"
