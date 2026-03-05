@@ -23,6 +23,7 @@ LOGIN_ITEMS=(
 )
 
 BREW_PACKAGES=(
+	act
 	aria2
 	atuin
 	bat
@@ -68,6 +69,7 @@ BREW_CASK_PACKAGES=(
 	google-chrome
 	hammerspoon
 	homerow
+	iina
 	karabiner-elements
 	launchbar
 	little-snitch
@@ -555,6 +557,14 @@ config() {
 
 	# "Appearance > Show scroll bars: Always"
 	defaults write -g AppleShowScrollBars -string Always
+
+	# "Appearance > Accent color"
+	defaults write -g AppleAccentColor -int 4
+	defaults write -g AppleAquaColorVariant -int 1
+
+	# "Appearance > Folder color"
+	defaults write -g AppleIconAppearanceTintColor -string Other
+	defaults write -g AppleIconAppearanceCustomTintColor -string "0.475000 0.839008 1.000000 0.940000"
 
 	# "Appearance > Allow wallpaper tinting in windows"
 	defaults write -g AppleReduceDesktopTinting -bool true
