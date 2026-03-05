@@ -1,10 +1,6 @@
 ---
 name: create-macos-app
-description: >
-  Blueprint for setting up a new macOS Xcode project the right way. Use this skill whenever
-  the user asks to create a macOS app, set up a new macOS Xcode project, or bootstrap a
-  macOS application. Covers project creation, scheme configuration, code-level bootstrapping,
-  menu bar setup, build configurations, and linting tooling.
+description: Blueprint for setting up a new macOS Xcode project the right way. Use this skill whenever the user asks to create a macOS app, set up a new macOS Xcode project, or bootstrap a macOS application. Covers project creation, scheme configuration, code-level bootstrapping, menu bar setup, build configurations, and linting tooling.
 ---
 
 # macOS App Setup Blueprint

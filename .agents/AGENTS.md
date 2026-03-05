@@ -1,2 +1,3 @@
 - My projects directory is at ~/Developer.
 - When I say something like "clone my repo FOO", I'm referring to repo FOO hosted on my own GitHub account, so use the `gh` command-line tool to clone that repo to my projects directory.
+- NEVER overwrite manual changes I make between prompts (that is, from the start of a session until its end, or the next commit).

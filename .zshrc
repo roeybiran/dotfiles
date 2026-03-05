@@ -31,11 +31,11 @@ setopt AUTO_CD
 setopt NO_CASE_GLOB
 
 ### KEY BINDINGS
-autoload -Uz up-line-or-beginning-search
-autoload -Uz down-line-or-beginning-search
-zle -N up-line-or-beginning-search
-zle -N down-line-or-beginning-search
-bindkey '^y' autosuggest-accept
+# autoload -Uz up-line-or-beginning-search
+# autoload -Uz down-line-or-beginning-search
+# zle -N up-line-or-beginning-search
+# zle -N down-line-or-beginning-search
+# bindkey '^y' autosuggest-accept
 
 ### SCRIPTS
 for s in ~/.config/scripts/* ~/.config/scripts/private/*; do
@@ -45,11 +45,21 @@ done
 ### ALIASES
 source ~/.config/aliases
 
-### 3RD-PARTY
-source /opt/homebrew/opt/spaceship/spaceship.zsh
-source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-FZF_CTRL_R_COMMAND= # disable fzf's default Ctrl+R binding in favor of atuin
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+### SPACESHIP
+# source /opt/homebrew/opt/spaceship/spaceship.zsh
+
+### ZSH-AUTOSUGGESTIONS
+# source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+### FZF
+# FZF_CTRL_R_COMMAND= # disable fzf's default Ctrl+R binding in favor of atuin
+# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+### ZOXIDE
 eval "$(zoxide init zsh)"
-eval "$(atuin init zsh)"
+
+### ATUIN
+# eval "$(atuin init zsh)"
+
+### CLAUDE CODE
 export PATH="$HOME/.local/bin:$PATH"

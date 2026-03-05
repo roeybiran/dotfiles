@@ -59,6 +59,7 @@ BREW_CASK_PACKAGES=(
 	chatgpt
 	cursor
 	dash
+	docker-desktop
 	dropbox
 	figma
 	finbar
@@ -80,6 +81,12 @@ BREW_CASK_PACKAGES=(
 	the-unarchiver
 	transmit
 	visual-studio-code
+)
+
+NPM_PACKAGES=(
+	@openai/codex
+	create-dmg
+	np
 )
 
 MAS_APPS="Developer	640199958
@@ -1046,8 +1053,9 @@ installations() {
 		git clone --depth=1 https://github.com/spaceship-prompt/spaceship-vi-mode.git "$HOME/.zsh/spaceship-vi-mode"
 	fi
 
-	npm install -g create-dmg
-	npm install -g np
+	for package in "${NPM_PACKAGES[@]}"; do
+		npm install -g "$package"
+	done
 
 	if ! command -v claude &>/dev/null; then
 		curl -fsSL https://claude.ai/install.sh | bash
