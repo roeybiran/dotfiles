@@ -1,0 +1,4 @@
+interface:
+  display_name: "Sparkle Updater"
+  short_description: "Integrate and maintain Sparkle app updates in macOS apps."
+  default_prompt: "Set up or fix Sparkle update integration, appcast publishing, signing, and testing for a macOS app."
